@@ -4,6 +4,7 @@ import {
   parseDatabaseItems,
 } from "@/utils/parseDatabaseItems";
 import { GetStaticProps, NextPage } from "next";
+import HeroSection from "./component/intro/hero_section";
 
 interface Props {
   items: ParseDatabaseItem[];
@@ -12,7 +13,7 @@ interface Props {
 const Home: NextPage<Props> = ({ items }) => {
   return (
     <>
-      <div>Home</div>
+      <HeroSection />
     </>
   );
 };
