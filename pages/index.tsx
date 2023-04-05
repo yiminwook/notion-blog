@@ -4,8 +4,8 @@ import {
   parseDatabaseItems,
 } from "@/utils/parseDatabaseItems";
 import { GetStaticProps, NextPage } from "next";
-import CardSection from "./component/intro/card_section";
-import HeroSection from "./component/intro/hero_section";
+import CardSection from "../component/intro/card_section";
+import HeroSection from "../component/intro/hero_section";
 
 interface Props {
   items: ParseDatabaseItem[];
