@@ -1,9 +1,12 @@
 import { Client } from "@notionhq/client";
+import { NotionAPI } from "notion-client";
 
+/** @notionhq */
 export const notionClient = new Client({
   auth: process.env.NOTION_API_KEY ?? "",
 });
 
+/** @notionhq */
 export const getDatabaseItems = async (databaseId: string) => {
   const response = await notionClient.databases.query({
     database_id: databaseId,
@@ -22,4 +25,13 @@ export const getDatabaseItems = async (databaseId: string) => {
   });
 
   return response.results;
+};
+
+/** notion-client */
+export const unofficialNotionClient = new NotionAPI();
+
+/** notion-client */
+export const getPageContent = async (pageId: string) => {
+  const recordMap = await unofficialNotionClient.getPage(pageId);
+  return recordMap;
 };
