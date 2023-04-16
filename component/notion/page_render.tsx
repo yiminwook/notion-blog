@@ -3,6 +3,8 @@ import { NotionRenderer } from "react-notion-x";
 import dynamic, { LoaderComponent } from "next/dynamic";
 import nextLink from "next/link";
 import nextImage from "next/image";
+import TagItem from "../card/tag/tag_item";
+import { ParseDatabaseItem } from "@/utils/parseDatabaseItems";
 
 const Code = dynamic(
   () =>
@@ -56,6 +58,23 @@ interface PageRenderProps {
 }
 
 const PageRender = ({ recordMap }: PageRenderProps) => {
+  const propertyDateValue = ({ data }: any) => {
+    const valueDate = data[0][1][0][1].start_date as string;
+    const [y, m, d] = valueDate.split("-").map((str) => +str);
+    const date = new Date(y, m, d);
+    const localDate = date.toLocaleDateString("ko-KR", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return localDate;
+  };
+
+  const propertySelectValue = ({ option: { id, color, value: name } }: any) => {
+    return <TagItem key={id} tagItem={{ id, color, name }} />;
+  };
+
   return (
     <NotionRenderer
       recordMap={recordMap}
@@ -70,6 +89,8 @@ const PageRender = ({ recordMap }: PageRenderProps) => {
         Modal,
         nextLink,
         nextImage,
+        propertyDateValue,
+        propertySelectValue,
       }}
     />
   );
