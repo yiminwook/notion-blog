@@ -1,11 +1,11 @@
-import { ParseDatabaseItem } from "@/utils/parseDatabaseItems";
+import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
 import Image from "next/image";
 import Link from "next/link";
 import TagList from "./tag/tag_list";
 import IconRender from "./icon_render";
 
 interface Props {
-  cardItem: ParseDatabaseItem;
+  cardItem: ParsedDatabaseItemType;
 }
 
 const CardItem = ({ cardItem }: Props) => {

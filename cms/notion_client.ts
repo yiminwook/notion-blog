@@ -6,15 +6,34 @@ export const notionClient = new Client({
   auth: process.env.NOTION_API_KEY ?? "",
 });
 
+interface DatabaseQueryOption {
+  filter?: {
+    tagName?: string;
+  };
+}
+
 /** @notionhq */
-export const getDatabaseItems = async (databaseId: string) => {
+export const getDatabaseItems = async (
+  databaseId: string,
+  option?: DatabaseQueryOption
+) => {
   const response = await notionClient.databases.query({
     database_id: databaseId,
     filter: {
-      property: "공개",
-      checkbox: {
-        equals: true,
-      },
+      and: [
+        {
+          property: "공개",
+          checkbox: {
+            equals: true,
+          },
+        },
+        {
+          property: "태그",
+          multi_select: {
+            contains: option?.filter?.tagName ?? "",
+          },
+        },
+      ],
     },
     sorts: [
       {

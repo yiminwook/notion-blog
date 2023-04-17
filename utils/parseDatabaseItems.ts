@@ -4,7 +4,7 @@ import {
   PageObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
-export interface ParseDatabaseItem {
+export interface ParsedDatabaseItemType {
   id: string;
   title: string;
   published: string;
@@ -17,7 +17,7 @@ export interface ParseDatabaseItem {
 export const parseDatabaseItems = (
   items: Awaited<ReturnType<typeof getDatabaseItems>>
 ) => {
-  const parsedItems = items.reduce<ParseDatabaseItem[]>((acc, item) => {
+  const parsedItems = items.reduce<ParsedDatabaseItemType[]>((acc, item) => {
     if (!("properties" in item)) return acc;
     const { id, icon, cover } = item;
     const { 이름, 작성일, 설명, 태그 } = item.properties;
@@ -29,7 +29,7 @@ export const parseDatabaseItems = (
       cover?.type === "file" ? cover.file.url : cover?.external.url;
     const tags = 태그.type === "multi_select" ? 태그.multi_select : [];
 
-    const parsedResult: ParseDatabaseItem = {
+    const parsedResult: ParsedDatabaseItemType = {
       id,
       title: title ?? "",
       published: published ?? "",

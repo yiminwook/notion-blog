@@ -1,8 +1,8 @@
-import { ParseDatabaseItem } from "@/utils/parseDatabaseItems";
+import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
 import Image from "next/image";
 
 interface Props {
-  icon: ParseDatabaseItem["icon"];
+  icon: ParsedDatabaseItemType["icon"];
   alt: string;
 }
 

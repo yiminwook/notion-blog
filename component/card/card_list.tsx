@@ -1,8 +1,8 @@
-import { ParseDatabaseItem } from "@/utils/parseDatabaseItems";
+import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
 import CardItem from "./card_item";
 
 interface Props {
-  cardItems: ParseDatabaseItem[];
+  cardItems: ParsedDatabaseItemType[];
 }
 
 const CardList = ({ cardItems }: Props) => {

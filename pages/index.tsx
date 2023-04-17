@@ -1,6 +1,6 @@
 import { getDatabaseItems } from "@/cms/notion_client";
 import {
-  ParseDatabaseItem,
+  ParsedDatabaseItemType,
   parseDatabaseItems,
 } from "@/utils/parseDatabaseItems";
 import { GetStaticProps, NextPage } from "next";
@@ -8,7 +8,7 @@ import CardSection from "../component/intro/card_section";
 import HeroSection from "../component/intro/hero_section";
 
 interface Props {
-  items: ParseDatabaseItem[];
+  items: ParsedDatabaseItemType[];
 }
 
 const Home: NextPage<Props> = ({ items }) => {
@@ -32,6 +32,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       items: parsedItems,
     },
-    revalidate: 30,
+    revalidate: 60,
   };
 };

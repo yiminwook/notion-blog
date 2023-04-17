@@ -4,7 +4,7 @@ import dynamic, { LoaderComponent } from "next/dynamic";
 import nextLink from "next/link";
 import nextImage from "next/image";
 import TagItem from "../card/tag/tag_item";
-import { ParseDatabaseItem } from "@/utils/parseDatabaseItems";
+import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
 
 const Code = dynamic(
   () =>
