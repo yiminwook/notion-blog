@@ -1,14 +1,12 @@
-import { getStaticProps } from "@/pages";
-
-interface TagHeroSectionProps {
+interface TagsHeroSectionProps {
   subTitle?: string;
   title?: string;
 }
 
-const TagHeroSection = ({
-  subTitle = "Tag Collection",
+const TagsHeroSection = ({
+  subTitle = "Tags Collection",
   title = "All Tags",
-}: TagHeroSectionProps) => {
+}: TagsHeroSectionProps) => {
   return (
     <section>
       <div className="w-4/5 max-w-5xl mx-auto py-16 flex flex-col gap-4">
@@ -19,4 +17,4 @@ const TagHeroSection = ({
   );
 };
 
-export default TagHeroSection;
+export default TagsHeroSection;

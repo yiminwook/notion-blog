@@ -1,6 +1,6 @@
 import { getDatabaseItems } from "@/cms/notion_client";
 import CardSection from "@/component/intro/card_section";
-import TagHeroSection from "@/component/tag/hero_section";
+import TagsHeroSection from "@/component/tags/hero_section";
 import { getAllTags } from "@/utils/getAllTags";
 import {
   parseDatabaseItems,
@@ -9,29 +9,29 @@ import {
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 
-interface TagPageProps {
+interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];
   tagName: string;
 }
 
-const TagPage = ({ databaseItems, tagName }: TagPageProps) => {
+const TagsPage = ({ databaseItems, tagName }: TagsPageProps) => {
   return (
-    <div>
-      <TagHeroSection title={`#${tagName}`} />
+    <div className="h-[calc(100vh-4.5rem-5.5rem)]">
+      <TagsHeroSection title={`#${tagName}`} />
       <CardSection cardItems={databaseItems} />
     </div>
   );
 };
 
-export default TagPage;
+export default TagsPage;
 
-interface TagPageParams extends ParsedUrlQuery {
+interface TagsPageParams extends ParsedUrlQuery {
   tagName: string;
 }
 
 export const getStaticProps: GetStaticProps<
-  TagPageProps,
-  TagPageParams
+  TagsPageProps,
+  TagsPageParams
 > = async ({ params }) => {
   const { tagName } = params!;
   const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
@@ -59,6 +59,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
