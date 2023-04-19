@@ -1,11 +1,11 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import TagItem from './tag_item';
 
-interface Props {
+interface TagListProps {
   tags: ParsedDatabaseItemType['tags'];
 }
 
-const TagList = ({ tags }: Props) => {
+const TagList = ({ tags }: TagListProps) => {
   return (
     <ul className="p-4 flex flex-row flex-wrap gap-2">
       {tags.map((item) => (

@@ -4,11 +4,11 @@ import Link from 'next/link';
 import TagList from './tag/tag_list';
 import IconRender from './icon_render';
 
-interface Props {
+interface CardItemProps {
   cardItem: ParsedDatabaseItemType;
 }
 
-const CardItem = ({ cardItem }: Props) => {
+const CardItem = ({ cardItem }: CardItemProps) => {
   const { cover, description, icon, id, published, tags, title } = cardItem;
   return (
     <li className="rounded-2xl overflow-hidden shadow-lg group flex flex-col">

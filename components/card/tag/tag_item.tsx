@@ -2,11 +2,11 @@ import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import Link from 'next/link';
 import { COLOR_TABLE } from '../../../consts/const';
 
-interface Props {
+interface TagItemProps {
   tagItem: ParsedDatabaseItemType['tags'][number];
 }
 
-const TagItem = ({ tagItem }: Props) => {
+const TagItem = ({ tagItem }: TagItemProps) => {
   const { name, color } = tagItem;
   return (
     <li>

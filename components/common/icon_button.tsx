@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 
-interface Props {
+interface IconButtonProps {
   icon: ReactNode;
 }
 
-const IconButton = ({ icon }: Props) => {
+const IconButton = ({ icon }: IconButtonProps) => {
   return <button className="p-2 bg-black rounded-md hover:bg-gray-700">{icon}</button>;
 };
 

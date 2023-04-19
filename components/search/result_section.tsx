@@ -31,10 +31,6 @@ const LoadingIndicator = () => {
   );
 };
 
-interface ErrorIndicatorProps {
-  error: Error;
-}
-
-const ErrorIndicator = ({ error }: ErrorIndicatorProps) => {
+const ErrorIndicator = ({ error }: { error: Error }) => {
   return <div>Something is Wrong! {error.message}</div>;
 };

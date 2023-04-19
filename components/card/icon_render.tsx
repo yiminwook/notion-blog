@@ -1,12 +1,12 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import Image from 'next/image';
 
-interface Props {
+interface IconRenderProps {
   icon: ParsedDatabaseItemType['icon'];
   alt: string;
 }
 
-const IconRender = ({ icon, alt }: Props) => {
+const IconRender = ({ icon, alt }: IconRenderProps) => {
   if (!icon) return null;
 
   if (icon.type === 'emoji') return <span>{icon.emoji}</span>;

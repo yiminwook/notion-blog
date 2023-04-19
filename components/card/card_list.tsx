@@ -1,11 +1,11 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import CardItem from './card_item';
 
-interface Props {
+interface CardListProps {
   cardItems: ParsedDatabaseItemType[];
 }
 
-const CardList = ({ cardItems }: Props) => {
+const CardList = ({ cardItems }: CardListProps) => {
   if (cardItems === undefined || cardItems.length === 0) {
     return <div className="text-center text-2xl font-bold">No Items Found!</div>;
   }
