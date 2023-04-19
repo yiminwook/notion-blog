@@ -1,57 +1,35 @@
-import { getPageContent } from "@/cms/notion_client";
-import { NotionRenderer } from "react-notion-x";
-import dynamic, { LoaderComponent } from "next/dynamic";
-import nextLink from "next/link";
-import nextImage from "next/image";
-import TagItem from "../card/tag/tag_item";
-import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
+import { getPageContent } from '@/model/notion_client';
+import { NotionRenderer } from 'react-notion-x';
+import dynamic, { LoaderComponent } from 'next/dynamic';
+import nextLink from 'next/link';
+import nextImage from 'next/image';
+import TagItem from '../card/tag/tag_item';
 
-const Code = dynamic(
-  () =>
-    import("react-notion-x/build/third-party/code").then(
-      (m) => m.Code
-    ) as LoaderComponent,
-  {
-    ssr: false,
-  }
-);
+const Code = dynamic(() => import('react-notion-x/build/third-party/code').then((m) => m.Code) as LoaderComponent, {
+  ssr: false,
+});
 
 const Collection = dynamic(
-  () =>
-    import("react-notion-x/build/third-party/collection").then(
-      (m) => m.Collection
-    ) as LoaderComponent,
+  () => import('react-notion-x/build/third-party/collection').then((m) => m.Collection) as LoaderComponent,
   {
     ssr: false,
-  }
+  },
 );
 
 const Equation = dynamic(
-  () =>
-    import("react-notion-x/build/third-party/equation").then(
-      (m) => m.Equation
-    ) as LoaderComponent,
+  () => import('react-notion-x/build/third-party/equation').then((m) => m.Equation) as LoaderComponent,
   {
     ssr: false,
-  }
+  },
 );
 
-const Pdf = dynamic(
-  () =>
-    import("react-notion-x/build/third-party/pdf").then(
-      (m) => m.Pdf
-    ) as LoaderComponent,
-  {
-    ssr: false,
-  }
-);
+const Pdf = dynamic(() => import('react-notion-x/build/third-party/pdf').then((m) => m.Pdf) as LoaderComponent, {
+  ssr: false,
+});
 
-const Modal = dynamic(
-  () => import("react-notion-x/build/third-party/modal").then((m) => m.Modal),
-  {
-    ssr: false,
-  }
-);
+const Modal = dynamic(() => import('react-notion-x/build/third-party/modal').then((m) => m.Modal), {
+  ssr: false,
+});
 
 interface PageRenderProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
@@ -60,13 +38,13 @@ interface PageRenderProps {
 const PageRender = ({ recordMap }: PageRenderProps) => {
   const propertyDateValue = ({ data }: any) => {
     const valueDate = data[0][1][0][1].start_date as string;
-    const [y, m, d] = valueDate.split("-").map((str) => +str);
+    const [y, m, d] = valueDate.split('-').map((str) => +str);
     const date = new Date(y, m, d);
-    const localDate = date.toLocaleDateString("ko-KR", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    const localDate = date.toLocaleDateString('ko-KR', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     });
     return localDate;
   };

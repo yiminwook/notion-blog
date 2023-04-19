@@ -1,13 +1,10 @@
-import { getDatabaseItems } from "@/cms/notion_client";
-import CardSection from "@/component/intro/card_section";
-import TagsHeroSection from "@/component/tags/hero_section";
-import { getAllTags } from "@/utils/getAllTags";
-import {
-  parseDatabaseItems,
-  ParsedDatabaseItemType,
-} from "@/utils/parseDatabaseItems";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { ParsedUrlQuery } from "querystring";
+import { getDatabaseItems } from '@/model/notion_client';
+import CardSection from '@/component/intro/card_section';
+import TagsHeroSection from '@/component/tags/hero_section';
+import { getAllTags } from '@/utils/getAllTags';
+import { parseDatabaseItems, ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
 interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];
@@ -29,14 +26,11 @@ interface TagsPageParams extends ParsedUrlQuery {
   tagName: string;
 }
 
-export const getStaticProps: GetStaticProps<
-  TagsPageProps,
-  TagsPageParams
-> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<TagsPageProps, TagsPageParams> = async ({ params }) => {
   const { tagName } = params!;
   const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
   const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error("DATABASE_ID is not defined");
+  if (!databaseId) throw new Error('DATABASE_ID is not defined');
   const options = {
     filter: { tagName: pascalTagName },
   };
@@ -49,7 +43,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error("DATABASE_ID is not defined");
+  if (!databaseId) throw new Error('DATABASE_ID is not defined');
 
   const databaseItems = await getDatabaseItems(databaseId);
   const tags = getAllTags(databaseItems);
@@ -59,6 +53,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };

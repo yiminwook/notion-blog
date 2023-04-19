@@ -1,9 +1,9 @@
-import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
-import Link from "next/link";
-import { COLOR_TABLE } from "../../../const/const";
+import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
+import Link from 'next/link';
+import { COLOR_TABLE } from '../../../const/const';
 
 interface Props {
-  tagItem: ParsedDatabaseItemType["tags"][number];
+  tagItem: ParsedDatabaseItemType['tags'][number];
 }
 
 const TagItem = ({ tagItem }: Props) => {

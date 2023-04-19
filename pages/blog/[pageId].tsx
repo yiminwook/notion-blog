@@ -1,7 +1,7 @@
-import { getDatabaseItems, getPageContent } from "@/cms/notion_client";
-import PageRender from "@/component/notion/page_render";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { ParsedUrlQuery } from "querystring";
+import { getDatabaseItems, getPageContent } from '@/model/notion_client';
+import PageRender from '@/component/notion/page_render';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { ParsedUrlQuery } from 'querystring';
 
 interface DetailBlogPageProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
@@ -21,10 +21,7 @@ interface DetailBlogPageParams extends ParsedUrlQuery {
   pageId: string;
 }
 
-export const getStaticProps: GetStaticProps<
-  DetailBlogPageProps,
-  DetailBlogPageParams
-> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<DetailBlogPageProps, DetailBlogPageParams> = async ({ params }) => {
   const { pageId } = params!;
 
   const recordMap = await getPageContent(pageId);
@@ -37,7 +34,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error("DATABASE_ID is not defined");
+  if (!databaseId) throw new Error('DATABASE_ID is not defined');
   const databaseItems = await getDatabaseItems(databaseId);
 
   const paths = databaseItems.map(({ id: pageId }) => ({ params: { pageId } }));

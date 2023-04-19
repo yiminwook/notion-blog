@@ -1,15 +1,15 @@
-import IconButton from "../common/icon_button";
-import { AiOutlineSearch } from "react-icons/ai";
-import Link from "next/link";
+import IconButton from '../common/icon_button';
+import { AiOutlineSearch } from 'react-icons/ai';
+import Link from 'next/link';
 
 const navLinks = [
   {
-    name: "Tags",
-    link: "/tags",
+    name: 'Tags',
+    link: '/tags',
   },
   {
-    name: "About",
-    link: "/about",
+    name: 'About',
+    link: '/about',
   },
 ];
 
@@ -25,18 +25,14 @@ const Header = () => {
             {navLinks.map(({ name, link }) => (
               <li key={name} className="text-gray-600 font-medium">
                 <Link href={link}>
-                  <a className="p-3 rounded-md hover:bg-gray-100  hover:text-black">
-                    {name}
-                  </a>
+                  <a className="p-3 rounded-md hover:bg-gray-100  hover:text-black">{name}</a>
                 </Link>
               </li>
             ))}
             <li>
               <Link href="/search">
                 <a>
-                  <IconButton
-                    icon={<AiOutlineSearch size="1.5rem" color="white" />}
-                  />
+                  <IconButton icon={<AiOutlineSearch size="1.5rem" color="white" />} />
                 </a>
               </Link>
             </li>

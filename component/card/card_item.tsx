@@ -1,8 +1,8 @@
-import { ParsedDatabaseItemType } from "@/utils/parseDatabaseItems";
-import Image from "next/image";
-import Link from "next/link";
-import TagList from "./tag/tag_list";
-import IconRender from "./icon_render";
+import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
+import Image from 'next/image';
+import Link from 'next/link';
+import TagList from './tag/tag_list';
+import IconRender from './icon_render';
 
 interface Props {
   cardItem: ParsedDatabaseItemType;
@@ -28,12 +28,8 @@ const CardItem = ({ cardItem }: Props) => {
               <IconRender icon={icon} alt={title} />
               {title}
             </h4>
-            {description ? (
-              <p className="font-medium text-gray-600">{description}</p>
-            ) : null}
-            <time className="font-medium text-gray-700 text-sm">
-              {published}
-            </time>
+            {description ? <p className="font-medium text-gray-600">{description}</p> : null}
+            <time className="font-medium text-gray-700 text-sm">{published}</time>
           </div>
         </a>
       </Link>
