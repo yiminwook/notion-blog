@@ -4,11 +4,11 @@ import { GetStaticProps, NextPage } from 'next';
 import CardSection from '@/components/intro/card_section';
 import HeroSection from '@/components/intro/hero_section';
 
-interface Props {
+interface IndexPageProps {
   items: ParsedDatabaseItemType[];
 }
 
-const Home: NextPage<Props> = ({ items }) => {
+const Home: NextPage<IndexPageProps> = ({ items }) => {
   return (
     <div>
       <HeroSection />
@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ items }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<IndexPageProps> = async () => {
   const databaseId = process.env.NOTION_DATABASE_ID;
   if (!databaseId) throw new Error('DATABASE_ID is not defined');
   const databaseItems = await getDatabaseItems(databaseId);
