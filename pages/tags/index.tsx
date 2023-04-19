@@ -1,6 +1,6 @@
-import { getDatabaseItems } from '@/model/notion_client';
-import TagsHeroSection from '@/component/tags/hero_section';
-import TagContainer from '@/component/tags/tag_container';
+import { getDatabaseItems } from '@/models/notion_client';
+import TagsHeroSection from '@/components/tags/hero_section';
+import TagContainer from '@/components/tags/tag_container';
 import { getAllTags } from '@/utils/getAllTags';
 import { GetStaticProps } from 'next';
 

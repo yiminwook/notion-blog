@@ -1,4 +1,4 @@
-import { getPageContent } from '@/model/notion_client';
+import { getPageContent } from '@/models/notion_client';
 import { NotionRenderer } from 'react-notion-x';
 import dynamic, { LoaderComponent } from 'next/dynamic';
 import nextLink from 'next/link';
@@ -31,11 +31,11 @@ const Modal = dynamic(() => import('react-notion-x/build/third-party/modal').the
   ssr: false,
 });
 
-interface PageRenderProps {
+interface NotionPageRenderProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
 }
 
-const PageRender = ({ recordMap }: PageRenderProps) => {
+const NotionPageRender = ({ recordMap }: NotionPageRenderProps) => {
   const propertyDateValue = ({ data }: any) => {
     const valueDate = data[0][1][0][1].start_date as string;
     const [y, m, d] = valueDate.split('-').map((str) => +str);
@@ -74,4 +74,4 @@ const PageRender = ({ recordMap }: PageRenderProps) => {
   );
 };
 
-export default PageRender;
+export default NotionPageRender;

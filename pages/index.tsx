@@ -1,8 +1,8 @@
-import { getDatabaseItems } from '@/model/notion_client';
+import { getDatabaseItems } from '@/models/notion_client';
 import { ParsedDatabaseItemType, parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticProps, NextPage } from 'next';
-import CardSection from '../component/intro/card_section';
-import HeroSection from '../component/intro/hero_section';
+import CardSection from '../components/intro/card_section';
+import HeroSection from '../components/intro/hero_section';
 
 interface Props {
   items: ParsedDatabaseItemType[];

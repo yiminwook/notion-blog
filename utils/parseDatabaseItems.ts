@@ -1,4 +1,4 @@
-import { getDatabaseItems } from '@/model/notion_client';
+import { getDatabaseItems } from '@/models/notion_client';
 import { MultiSelectPropertyItemObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export interface ParsedDatabaseItemType {

@@ -1,5 +1,5 @@
-import { getDatabaseItems, getPageContent } from '@/model/notion_client';
-import PageRender from '@/component/notion/page_render';
+import { getDatabaseItems, getPageContent } from '@/models/notion_client';
+import NotionPageRender from '@/components/notion/page_render';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 
@@ -10,7 +10,7 @@ interface DetailBlogPageProps {
 const DetailBlogPage = ({ recordMap }: DetailBlogPageProps) => {
   return (
     <div>
-      <PageRender recordMap={recordMap} />
+      <NotionPageRender recordMap={recordMap} />
     </div>
   );
 };

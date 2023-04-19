@@ -1,4 +1,4 @@
-import { getSearchItems } from '@/model/notion_client';
+import { getSearchItems } from '@/models/notion_client';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { NextApiRequest, NextApiResponse } from 'next';
 import BadReqError from './error/bad_request_error';

@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import RootLayout from '../component/layout/root_layout';
+import RootLayout from '../components/layout/root_layout';
 
 // react-notion-x
 import 'react-notion-x/src/styles.css';
