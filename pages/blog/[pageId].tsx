@@ -2,6 +2,8 @@ import { getDatabaseItems, getPageContent } from '@/models/notion_client';
 import NotionPageRender from '@/components/notion/page_render';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { PAGE_REVALIDATE_TIME } from '@/consts/const';
+import getEnv from '@/utils/getEnv';
 
 interface DetailBlogPageProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
@@ -28,15 +30,13 @@ export const getStaticProps: GetStaticProps<DetailBlogPageProps, DetailBlogPageP
 
   return {
     props: { recordMap },
-    revalidate: 300,
+    revalidate: PAGE_REVALIDATE_TIME,
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error('DATABASE_ID is not defined');
+  const databaseId = getEnv('NOTION_DATABASE_ID');
   const databaseItems = await getDatabaseItems(databaseId);
-
   const paths = databaseItems.map(({ id: pageId }) => ({ params: { pageId } }));
 
   return {

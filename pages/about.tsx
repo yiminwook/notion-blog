@@ -1,5 +1,7 @@
 import NotionPageRender from '@/components/notion/page_render';
+import { PAGE_REVALIDATE_TIME } from '@/consts/const';
 import { getPageContent } from '@/models/notion_client';
+import getEnv from '@/utils/getEnv';
 import { GetStaticProps, NextPage } from 'next';
 
 interface AboutPageProps {
@@ -17,11 +19,10 @@ const AboutPage: NextPage<AboutPageProps> = ({ recordMap }) => {
 export default AboutPage;
 
 export const getStaticProps: GetStaticProps<AboutPageProps> = async () => {
-  const profileId = process.env.NOTION_PROFILE_ID;
-  if (!profileId) throw new Error('PROFILE_ID not defind');
+  const profileId = getEnv('NOTION_PROFILE_ID');
   const recordMap = await getPageContent(profileId);
   return {
     props: { recordMap },
-    revalidate: 30,
+    revalidate: PAGE_REVALIDATE_TIME,
   };
 };
