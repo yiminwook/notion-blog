@@ -5,49 +5,53 @@ import { getAllTags } from '@/utils/getAllTags';
 import { parseDatabaseItems, ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
+import { ITEMS_PER_PAGE } from '@/consts/const';
+import { getEnv } from '@/utils/getEnv';
 
-interface TagsPageProps {
+export interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];
   tagName: string;
+  totalLength: number;
 }
 
-const TagsPage = ({ databaseItems, tagName }: TagsPageProps) => {
+const TagsPage = ({ databaseItems, tagName, totalLength }: TagsPageProps) => {
   return (
-    <div className="h-[calc(100vh-4.5rem-5.5rem)]">
+    <div>
       <TagsHeroSection title={`#${tagName}`} />
-      <CardSection cardItems={databaseItems} />
+      <CardSection cardItems={databaseItems} totalLength={totalLength} />
     </div>
   );
 };
 
 export default TagsPage;
 
-interface TagsPageParams extends ParsedUrlQuery {
+export interface TagsPageParams extends ParsedUrlQuery {
   tagName: string;
 }
 
 export const getStaticProps: GetStaticProps<TagsPageProps, TagsPageParams> = async ({ params }) => {
+  /* Params */
   const { tagName } = params!;
   const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
-  const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error('DATABASE_ID is not defined');
+
+  const databaseId = getEnv('NOTION_DATABASE_ID');
+
+  /** TagFilter option */
   const options = {
     filter: { tagName: pascalTagName },
   };
   const databaseItems = await getDatabaseItems(databaseId, options);
-  const parsedDatabaseItems = parseDatabaseItems(databaseItems);
+  const parsedItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));
   return {
-    props: { databaseItems: parsedDatabaseItems, tagName: pascalTagName },
+    props: { databaseItems: parsedItems, tagName: pascalTagName, totalLength: databaseItems.length },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error('DATABASE_ID is not defined');
-
+  const databaseId = getEnv('NOTION_DATABASE_ID');
   const databaseItems = await getDatabaseItems(databaseId);
-  const tags = getAllTags(databaseItems);
-  const paths = tags.map(({ name }) => ({
+  const allTags = getAllTags(databaseItems);
+  const paths = allTags.map(({ name }) => ({
     params: { tagName: name.toLowerCase() },
   }));
 
