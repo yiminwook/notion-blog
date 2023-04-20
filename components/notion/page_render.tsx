@@ -49,7 +49,9 @@ const NotionPageRender = ({ recordMap }: NotionPageRenderProps) => {
     return localDate;
   };
 
-  const propertySelectValue = ({ option: { id, color, value: name } }: any) => {
+  const propertySelectValue = ({ option }: any) => {
+    if (!option) return;
+    const { id, color, name } = option;
     return <TagItem key={id} tagItem={{ id, color, name }} />;
   };
 
