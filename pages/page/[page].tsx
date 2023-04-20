@@ -1,5 +1,7 @@
 import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
 import { getDatabaseItems } from '@/models/notion_client';
+import { getEnv } from '@/utils/getEnv';
+import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -18,17 +20,13 @@ interface HomeWithPageParams extends ParsedUrlQuery {
 export const getStaticProps: GetStaticProps<HomePageProps, HomeWithPageParams> = async ({ params }) => {
   const { page } = params!;
 
+  /** Params */
   const pageQuery = Number(page);
-  if (Number.isNaN(pageQuery)) throw new Error('query is not number');
+  if (Number.isNaN(pageQuery)) throw new Error('PageQuery is not number');
 
-  const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error('DATABASE_ID is not defined');
-
+  const databaseId = getEnv('NOTION_DATABASE_ID');
   const databaseItems = await getDatabaseItems(databaseId);
-
-  const parsedItems = parseDatabaseItems(
-    databaseItems.slice((pageQuery - 1) * ITEMS_PER_PAGE, pageQuery * ITEMS_PER_PAGE),
-  );
+  const parsedItems = parseDatabaseItems(databaseItems.slice(...getPaginationRange(pageQuery)));
 
   return {
     props: {
@@ -40,9 +38,7 @@ export const getStaticProps: GetStaticProps<HomePageProps, HomeWithPageParams> =
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = process.env.NOTION_DATABASE_ID;
-  if (!databaseId) throw new Error('DATABASE_ID is not defined');
-
+  const databaseId = getEnv('NOTION_DATABASE_ID');
   const databaseItems = await getDatabaseItems(databaseId);
   const numberOfPages = Math.ceil(databaseItems.length / ITEMS_PER_PAGE);
   const paths = Array.from({ length: numberOfPages }, (_, i) => ({
