@@ -10,7 +10,7 @@ export const useSearch = (searchQuery: string) => {
   };
   const { data, error, mutate, isLoading } = useSWR(
     `/api/notion/items.search?query=${searchQuery}`,
-    fetcher<SearchResponseType>(),
+    fetcher<SearchResponseType>(searchQuery),
     options,
   );
   return { data: data?.databaseItems, error, mutate, isLoading };

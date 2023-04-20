@@ -10,9 +10,10 @@ interface CardItemProps {
 
 const CardItem = ({ cardItem }: CardItemProps) => {
   const { cover, description, icon, id, published, tags, title } = cardItem;
+
   return (
     <li className="rounded-2xl overflow-hidden shadow-lg group flex flex-col">
-      <Link href={`blog/${id}`}>
+      <Link href={`/blog/${id}`}>
         <a className="flex-grow">
           <div className="relative aspect-[1.3/1]">
             <Image
