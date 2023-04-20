@@ -14,7 +14,7 @@ export interface ParsedDatabaseItemType {
 export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseItems>>) => {
   const parsedItems = items.reduce<ParsedDatabaseItemType[]>((acc, item) => {
     if (!('properties' in item)) return acc;
-    if (item.parent.type !== 'database_id') return acc;
+    if (item.parent.type !== 'database_id') return acc; //search시
 
     const { id, icon, cover } = item;
     const { 이름, 작성일, 설명, 태그 } = item.properties;

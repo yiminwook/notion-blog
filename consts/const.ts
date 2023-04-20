@@ -14,3 +14,5 @@ export const COLOR_TABLE = {
 export const PAGENATION_RANGE = 5;
 
 export const ITEMS_PER_PAGE = 1;
+
+export const PAGE_REVALIDATE_TIME = 60;
