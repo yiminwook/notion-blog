@@ -6,7 +6,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main className="min-h-[calc(100vh-4.5rem-5.5rem)]">{children}</main>
       <Footer />
     </>
   );
