@@ -15,8 +15,8 @@ const Pagination = ({ totalPage }: PaginationProps) => {
   );
 
   return (
-    <div className="w-4/5 mx-auto">
-      <ul className="flex justify-between gap-2">
+    <div>
+      <ul className="flex gap-2 justify-center items-center">
         <li>
           <PaginationItem to={currentPage - 1} value="&lt;" disabled={currentPage === 1} />
         </li>
@@ -44,13 +44,13 @@ const PaginationItem = ({ to, value, disabled = false, active = false }: Paginat
   const { pathname, query } = useRouter();
   const paginationRoute = '/page/[page]';
   const extendedPathname =
-    pathname.indexOf(paginationRoute) === -1 ? `${pathname.replace(/\/$/, '')}${paginationRoute}` : paginationRoute;
+    pathname.indexOf(paginationRoute) === -1 ? `${pathname.replace(/\/$/, '')}${paginationRoute}` : pathname;
 
   return (
     <Link href={{ pathname: extendedPathname, query: { ...query, page: to } }}>
       <button
-        className={`px-4 py-2  hover:text-black rounded-lg disabled:text-gray-400 disabled:cursor-not-allowed ${
-          active ? 'bg-gray-100 text-black' : 'text-gray-500 hover:bg-gray-100'
+        className={`px-4 py-2 rounded-lg  hover:text-black hover:font-semibold disabled:text-gray-400 disabled:cursor-not-allowed ${
+          active ? 'bg-gray-100 text-black' : 'text-gray-500'
         }`}
         disabled={disabled}
       >
