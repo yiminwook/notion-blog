@@ -9,7 +9,7 @@ interface CardItemProps {
 }
 
 const CardItem = ({ cardItem }: CardItemProps) => {
-  const { cover, description, icon, id, published, tags, title } = cardItem;
+  const { cover, description, icon, id, published, tags, title, proxy } = cardItem;
 
   return (
     <li className="rounded-2xl overflow-hidden shadow-lg group flex flex-col">
@@ -17,7 +17,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
         <a className="flex-grow">
           <div className="relative aspect-[1.3/1]">
             <Image
-              src={cover}
+              src={proxy.cover ?? cover}
               alt={title}
               layout="fill"
               objectFit="cover"
@@ -26,7 +26,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
           </div>
           <div className="p-4 flex flex-col gap-4">
             <h4 className="font-bold text-2xl group-hover:text-blue-500 transition-colors flex flex-row items-center gap-1">
-              <IconRender icon={icon} alt={title} />
+              <IconRender icon={icon} alt={title} proxyIcon={proxy.icon} />
               {title}
             </h4>
             {description ? <p className="font-medium text-gray-600">{description}</p> : null}

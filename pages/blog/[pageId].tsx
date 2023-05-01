@@ -1,5 +1,5 @@
 import { getDatabaseItems, getPageContent } from '@/models/notionClient';
-import NotionPageRender from '@/components/notion/page_render';
+import NotionPageRender from '@/components/notion/PageRender';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';

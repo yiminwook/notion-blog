@@ -9,6 +9,10 @@ export interface ParsedDatabaseItemType {
   cover: string;
   icon: PageObjectResponse['icon'];
   tags: MultiSelectPropertyItemObjectResponse['multi_select'];
+  proxy: {
+    cover: string;
+    icon: string;
+  };
 }
 
 export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseItems>>) => {
@@ -16,13 +20,18 @@ export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseI
     if (!('properties' in item)) return acc;
     if (item.parent.type !== 'database_id') return acc; //search시
 
-    const { id, icon, cover } = item;
+    const { id, icon, cover, last_edited_time } = item;
     const { 이름, 작성일, 설명, 태그 } = item.properties;
     const title = 이름.type === 'title' ? 이름.title[0]?.plain_text : '';
     const published = 작성일.type === 'date' ? 작성일.date?.start : '';
     const description = 설명.type === 'rich_text' ? 설명.rich_text[0]?.plain_text : '';
     const parsedCover = cover?.type === 'file' ? cover.file.url : cover?.external.url;
     const tags = 태그.type === 'multi_select' ? 태그.multi_select : [];
+
+    const proxy = {
+      cover: `/api/notion/page.get?type=cover&pageId=${id}&lastEditedTime=${last_edited_time}`,
+      icon: `/api/notion/page.get?type=icon&pageId=${id}&lastEditedTime=${last_edited_time}`,
+    };
 
     const parsedResult: ParsedDatabaseItemType = {
       id,
@@ -32,6 +41,7 @@ export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseI
       cover: parsedCover ?? '',
       tags,
       icon,
+      proxy,
     };
 
     return [...acc, parsedResult];
