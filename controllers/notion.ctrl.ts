@@ -18,7 +18,7 @@ const search = async (req: NextApiRequest, res: NextApiResponse<SearchResponseTy
   return res.status(200).json({ databaseItems: parsedSearchItems });
 };
 
-const getPage = async (req: NextApiRequest, res: NextApiResponse) => {
+const image = async (req: NextApiRequest, res: NextApiResponse) => {
   const { type, pageId } = req.query;
 
   if (!type) throw new BadReqError('type is required');
@@ -55,6 +55,6 @@ const getPage = async (req: NextApiRequest, res: NextApiResponse) => {
   res.send(contentBuffer);
 };
 
-const notionCtrl = { search, getPage };
+const notionCtrl = { search, image };
 
 export default notionCtrl;

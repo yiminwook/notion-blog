@@ -8,7 +8,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { method } = req;
     const suportMethod = ['GET'];
     checkSupportMethod(suportMethod, method);
-    await notionCtrl.getPage(req, res);
+    await notionCtrl.image(req, res);
   } catch (error) {
     console.error(error);
     errorHandler(error, res);

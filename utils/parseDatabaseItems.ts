@@ -31,8 +31,8 @@ export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseI
     const tags = 태그.type === 'multi_select' ? 태그.multi_select : [];
 
     const proxy = {
-      cover: `/api/notion/page.get?type=cover&pageId=${id}&lastEditedTime=${last_edited_time}`,
-      icon: `/api/notion/page.get?type=icon&pageId=${id}&lastEditedTime=${last_edited_time}`,
+      cover: `/api/notion/image?type=cover&pageId=${id}&lastEditedTime=${last_edited_time}`,
+      icon: `/api/notion/image?type=icon&pageId=${id}&lastEditedTime=${last_edited_time}`,
     };
 
     const parsedResult: ParsedDatabaseItemType = {

@@ -74,5 +74,15 @@ export const unofficialNotionClient = new NotionAPI();
 /** notion-client */
 export const getPageContent = async (pageId: string) => {
   const recordMap = await unofficialNotionClient.getPage(pageId);
+  const signedURL = recordMap.signed_urls;
+  const filteredSignedURL = Object.keys(signedURL).reduce<typeof signedURL>((acc, curr) => {
+    if (signedURL[curr].indexOf('expirationTimestamp') > -1) return acc; //만료될 수 있는 url 삭제
+    acc[curr] = recordMap.signed_urls[curr];
+
+    return acc;
+  }, {});
+
+  recordMap.signed_urls = filteredSignedURL;
+
   return recordMap;
 };
