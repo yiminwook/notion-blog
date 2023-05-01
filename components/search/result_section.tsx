@@ -13,7 +13,7 @@ const SearchResultSection = () => {
 
   return (
     <section>
-      <div className="w-4/5 max-w-5xl my-16 mx-auto">
+      <div className="my-16 px-4">
         {data ? <CardList cardItems={data} /> : null}
         {isLoading ? <LoadingIndicator /> : null}
         {error ? <ErrorIndicator error={error} /> : null}

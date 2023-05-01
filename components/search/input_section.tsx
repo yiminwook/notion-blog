@@ -24,11 +24,11 @@ const SearchInputSection = () => {
 
   return (
     <section className="bg-black">
-      <div className="w-4/5 max-w-5xl mx-auto py-16">
+      <div className="mx-auto py-16 w-4/5">
         <form className="relative" onSubmit={onSubmit}>
           <input
             type="text"
-            className="w-full outline-none p-2 text-xl rounded-xl"
+            className="w-full outline-none px-4 py-2 text-xl rounded-xl"
             onChange={(e) => setInputValue(() => e.target.value)}
             value={inputValue}
           />
