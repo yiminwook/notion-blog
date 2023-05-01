@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import checkSupportMethod from '@/controllers/error/check_support_method';
+import checkSupportMethod from '@/controllers/error/checkSupportMethod';
 import errorHandler from '@/controllers/error/handler';
 import notionCtrl from '@/controllers/notionCtrl';
 

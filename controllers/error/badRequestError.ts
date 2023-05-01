@@ -1,4 +1,4 @@
-import CustomServerError from '@/controllers/error/custom_server_error';
+import CustomServerError from '@/controllers/error/customServerError';
 
 /** statusCode: 400 */
 export default class BadReqError extends CustomServerError {

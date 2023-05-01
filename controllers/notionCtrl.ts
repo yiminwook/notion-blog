@@ -2,8 +2,8 @@ import { getPageItem, getSearchItems } from '@/models/notionClient';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
-import BadReqError from '@/controllers/error/bad_request_error';
-import CustomServerError from '@/controllers/error/custom_server_error';
+import BadReqError from '@/controllers/error/badRequestError';
+import CustomServerError from '@/controllers/error/customServerError';
 
 export interface SearchResponseType {
   databaseItems: Awaited<ReturnType<typeof parseDatabaseItems>>;

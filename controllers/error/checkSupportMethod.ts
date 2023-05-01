@@ -1,4 +1,4 @@
-import CustomServerError from '@/controllers/error/custom_server_error';
+import CustomServerError from '@/controllers/error/customServerError';
 
 const checkSupportMethod = (suportMethod: string[], method: string | undefined) => {
   if (method === undefined || suportMethod.indexOf(method) === -1) {
