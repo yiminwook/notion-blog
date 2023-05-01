@@ -1,6 +1,6 @@
-import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import { getDatabaseItems } from '@/models/notionClient';
-import { getEnv } from '@/utils/getENV';
+import { getENV } from '@/utils/getENV';
 import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<HomePageProps, HomeWithPageParams> =
   const pageQuery = Number(page);
   if (Number.isNaN(pageQuery)) throw new Error('PageQuery is not number');
 
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const parsedItems = parseDatabaseItems(databaseItems.slice(...getPaginationRange(pageQuery)));
 
@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps<HomePageProps, HomeWithPageParams> =
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const numberOfPages = Math.ceil(databaseItems.length / ITEMS_PER_PAGE);
   const paths = Array.from({ length: numberOfPages }, (_, i) => ({

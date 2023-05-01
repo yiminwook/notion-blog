@@ -1,3 +1,7 @@
+export const NOTION_API_KEY = 'NOTION_API_KEY';
+export const NOTION_DATABASE_ID = 'NOTION_DATABASE_ID';
+export const NOTION_PROFILE_ID = 'NOTION_PROFILE_ID';
+
 export const COLOR_TABLE = {
   purple: '#e9d5ff',
   yellow: '#fef9c3',

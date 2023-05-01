@@ -1,4 +1,4 @@
-import { PAGENATION_RANGE } from '@/consts/const';
+import { PAGENATION_RANGE } from '@/consts';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';

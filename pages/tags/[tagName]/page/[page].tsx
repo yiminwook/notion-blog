@@ -1,11 +1,11 @@
-import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import { getDatabaseItems } from '@/models/notionClient';
 import { getAllTags } from '@/utils/getAllTags';
-import { getEnv } from '@/utils/getENV';
+import { getENV } from '@/utils/getENV';
 import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import TagsPage, { TagsPageParams, TagsPageProps } from '..';
+import TagsPage, { TagsPageParams, TagsPageProps } from '@/pages/tags/[tagName]';
 
 const TagsWithPage = (props: TagsPageProps) => {
   return <TagsPage {...props} />;
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<TagsPageProps, TagsWithPageParams> =
   if (Number.isNaN(pageQuery)) throw new Error('PageQuery is not number');
   const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
 
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
 
   /** TagFilter option */
   const options = {
@@ -51,7 +51,7 @@ interface TagsWithPagePath {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const parsedItems = parseDatabaseItems(databaseItems);
   const allTags = getAllTags(databaseItems);

@@ -1,11 +1,12 @@
-import getEnv from '@/utils/getENV';
+import { NOTION_API_KEY } from '@/consts';
+import getENV from '@/utils/getENV';
 import { Client } from '@notionhq/client';
 import { PageObjectResponse, PartialPageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionAPI } from 'notion-client';
 
 /** @notionhq */
 export const notionClient = new Client({
-  auth: getEnv('NOTION_API_KEY'),
+  auth: getENV(NOTION_API_KEY),
 });
 
 interface DatabaseQueryOption {

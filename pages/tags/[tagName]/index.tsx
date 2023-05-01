@@ -5,8 +5,8 @@ import { getAllTags } from '@/utils/getAllTags';
 import { parseDatabaseItems, ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { ITEMS_PER_PAGE } from '@/consts/const';
-import { getEnv } from '@/utils/getENV';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
+import { getENV } from '@/utils/getENV';
 
 export interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<TagsPageProps, TagsPageParams> = asy
   const { tagName } = params!;
   const pascalTagName = tagName[0].toUpperCase() + tagName.slice(1);
 
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
 
   /** TagFilter option */
   const options = {
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<TagsPageProps, TagsPageParams> = asy
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const allTags = getAllTags(databaseItems);
   const paths = allTags.map(({ name }) => ({

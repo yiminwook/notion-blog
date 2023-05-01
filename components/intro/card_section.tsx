@@ -1,4 +1,4 @@
-import { ITEMS_PER_PAGE } from '@/consts/const';
+import { ITEMS_PER_PAGE } from '@/consts';
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import CardList from '../card/card_list';
 import Pagination from '../common/pagination';

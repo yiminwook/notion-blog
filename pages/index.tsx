@@ -3,8 +3,8 @@ import { ParsedDatabaseItemType, parseDatabaseItems } from '@/utils/parseDatabas
 import { GetStaticProps, NextPage } from 'next';
 import CardSection from '@/components/intro/card_section';
 import HeroSection from '@/components/intro/hero_section';
-import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
-import getEnv from '@/utils/getENV';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import getENV from '@/utils/getENV';
 
 export interface HomePageProps {
   items: ParsedDatabaseItemType[];
@@ -23,7 +23,7 @@ const HomePage: NextPage<HomePageProps> = ({ items, totalLength }) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
-  const databaseId = getEnv('NOTION_DATABASE_ID');
+  const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const parsedItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));
 
