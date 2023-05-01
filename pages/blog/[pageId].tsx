@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
+import Comments from '@/components/common/Comments';
 
 interface DetailBlogPageProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
@@ -14,6 +15,7 @@ const DetailBlogPage = ({ recordMap }: DetailBlogPageProps) => {
   return (
     <div>
       <NotionPageRender recordMap={recordMap} />
+      <Comments />
     </div>
   );
 };
