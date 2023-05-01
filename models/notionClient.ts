@@ -1,4 +1,4 @@
-import getEnv from '@/utils/getEnv';
+import getEnv from '@/utils/getENV';
 import { Client } from '@notionhq/client';
 import { PageObjectResponse, PartialPageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { NotionAPI } from 'notion-client';
@@ -43,6 +43,12 @@ export const getDatabaseItems = async (databaseId: string, option?: DatabaseQuer
   });
 
   return databaseResponse.results;
+};
+
+export const getPageItem = (pageId: string) => {
+  const response = notionClient.pages.retrieve({ page_id: pageId });
+
+  return response;
 };
 
 /** @notionhq */

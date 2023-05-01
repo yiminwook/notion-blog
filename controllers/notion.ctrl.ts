@@ -1,4 +1,4 @@
-import { getSearchItems } from '@/models/notion_client';
+import { getSearchItems } from '@/models/notionClient';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { NextApiRequest, NextApiResponse } from 'next';
 export interface SearchResponseType {

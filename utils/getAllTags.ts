@@ -1,4 +1,4 @@
-import { getDatabaseItems } from '@/models/notion_client';
+import { getDatabaseItems } from '@/models/notionClient';
 import { ParsedDatabaseItemType } from './parseDatabaseItems';
 
 /** tag 중복제거 */

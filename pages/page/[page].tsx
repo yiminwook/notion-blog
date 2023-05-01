@@ -1,6 +1,6 @@
 import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
-import { getDatabaseItems } from '@/models/notion_client';
-import { getEnv } from '@/utils/getEnv';
+import { getDatabaseItems } from '@/models/notionClient';
+import { getEnv } from '@/utils/getENV';
 import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';

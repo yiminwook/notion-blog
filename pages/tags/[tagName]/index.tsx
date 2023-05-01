@@ -1,4 +1,4 @@
-import { getDatabaseItems } from '@/models/notion_client';
+import { getDatabaseItems } from '@/models/notionClient';
 import CardSection from '@/components/intro/card_section';
 import TagsHeroSection from '@/components/tags/hero_section';
 import { getAllTags } from '@/utils/getAllTags';
@@ -6,7 +6,7 @@ import { parseDatabaseItems, ParsedDatabaseItemType } from '@/utils/parseDatabas
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { ITEMS_PER_PAGE } from '@/consts/const';
-import { getEnv } from '@/utils/getEnv';
+import { getEnv } from '@/utils/getENV';
 
 export interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];

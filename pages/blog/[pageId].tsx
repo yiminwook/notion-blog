@@ -1,9 +1,9 @@
-import { getDatabaseItems, getPageContent } from '@/models/notion_client';
+import { getDatabaseItems, getPageContent } from '@/models/notionClient';
 import NotionPageRender from '@/components/notion/page_render';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { PAGE_REVALIDATE_TIME } from '@/consts/const';
-import getEnv from '@/utils/getEnv';
+import getEnv from '@/utils/getENV';
 
 interface DetailBlogPageProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;

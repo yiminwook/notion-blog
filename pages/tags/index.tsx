@@ -1,9 +1,9 @@
-import { getDatabaseItems } from '@/models/notion_client';
+import { getDatabaseItems } from '@/models/notionClient';
 import TagsHeroSection from '@/components/tags/hero_section';
 import TagContainer from '@/components/tags/tag_container';
 import { getAllTags } from '@/utils/getAllTags';
 import { GetStaticProps } from 'next';
-import { getEnv } from '@/utils/getEnv';
+import { getEnv } from '@/utils/getENV';
 
 interface TagsIndexPageProps {
   tags: ReturnType<typeof getAllTags>;

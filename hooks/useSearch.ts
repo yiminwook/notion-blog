@@ -9,7 +9,7 @@ export const useSearch = (searchQuery: string) => {
     dedupingInterval: 10 * 1000,
   };
   const { data, error, mutate, isLoading } = useSWR(
-    `/api/notion/items.search?query=${searchQuery}`,
+    `/api/notion/page.search?query=${searchQuery}`,
     fetcher<SearchResponseType>(searchQuery),
     options,
   );

@@ -1,10 +1,10 @@
-import { getDatabaseItems } from '@/models/notion_client';
+import { getDatabaseItems } from '@/models/notionClient';
 import { ParsedDatabaseItemType, parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticProps, NextPage } from 'next';
 import CardSection from '@/components/intro/card_section';
 import HeroSection from '@/components/intro/hero_section';
 import { ITEMS_PER_PAGE, PAGE_REVALIDATE_TIME } from '@/consts/const';
-import getEnv from '@/utils/getEnv';
+import getEnv from '@/utils/getENV';
 
 export interface HomePageProps {
   items: ParsedDatabaseItemType[];

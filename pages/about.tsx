@@ -1,7 +1,7 @@
 import NotionPageRender from '@/components/notion/page_render';
 import { PAGE_REVALIDATE_TIME } from '@/consts/const';
-import { getPageContent } from '@/models/notion_client';
-import getEnv from '@/utils/getEnv';
+import { getPageContent } from '@/models/notionClient';
+import getEnv from '@/utils/getENV';
 import { GetStaticProps, NextPage } from 'next';
 
 interface AboutPageProps {
