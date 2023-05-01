@@ -1,5 +1,6 @@
 import { getDatabaseItems } from '@/models/notionClient';
 import { MultiSelectPropertyItemObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { makePreviewImage } from '@/utils/previewImage';
 
 export interface ParsedDatabaseItemType {
   id: string;
@@ -9,6 +10,7 @@ export interface ParsedDatabaseItemType {
   cover: string;
   icon: PageObjectResponse['icon'];
   tags: MultiSelectPropertyItemObjectResponse['multi_select'];
+  previewImage?: Awaited<ReturnType<typeof makePreviewImage>>;
   proxy: {
     cover: string;
     icon: string;

@@ -1,5 +1,5 @@
 import { getDatabaseItems } from '@/models/notionClient';
-import { ParsedDatabaseItemType } from './parseDatabaseItems';
+import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 
 /** tag 중복제거 */
 export const getAllTags = (items: Awaited<ReturnType<typeof getDatabaseItems>>) => {

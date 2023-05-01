@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import { getENV } from '@/utils/getENV';
+import { insertPreviewImage } from '@/utils/previewImage';
 
 export interface TagsPageProps {
   databaseItems: ParsedDatabaseItemType[];
@@ -41,9 +42,14 @@ export const getStaticProps: GetStaticProps<TagsPageProps, TagsPageParams> = asy
     filter: { tagName: pascalTagName },
   };
   const databaseItems = await getDatabaseItems(databaseId, options);
-  const parsedItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));
+  const parsedDatabaseItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));
+  const parsedItemsWithPreviewImage = await insertPreviewImage(parsedDatabaseItems);
   return {
-    props: { databaseItems: parsedItems, tagName: pascalTagName, totalLength: databaseItems.length },
+    props: {
+      databaseItems: parsedItemsWithPreviewImage,
+      tagName: pascalTagName,
+      totalLength: databaseItems.length,
+    },
   };
 };
 

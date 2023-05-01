@@ -6,6 +6,7 @@ import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import TagsPage, { TagsPageParams, TagsPageProps } from '@/pages/tags/[tagName]';
+import { insertPreviewImage } from '@/utils/previewImage';
 
 const TagsWithPage = (props: TagsPageProps) => {
   return <TagsPage {...props} />;
@@ -31,11 +32,12 @@ export const getStaticProps: GetStaticProps<TagsPageProps, TagsWithPageParams> =
     filter: { tagName: pascalTagName },
   };
   const databaseItems = await getDatabaseItems(databaseId, options);
-  const parsedItems = parseDatabaseItems(databaseItems.slice(...getPaginationRange(pageQuery)));
+  const parsedDatabaseItems = parseDatabaseItems(databaseItems.slice(...getPaginationRange(pageQuery)));
+  const parsedItemsWithPreview = await insertPreviewImage(parsedDatabaseItems);
 
   return {
     props: {
-      databaseItems: parsedItems,
+      databaseItems: parsedItemsWithPreview,
       tagName: pascalTagName,
       totalLength: databaseItems.length,
     },

@@ -1,6 +1,6 @@
 import { SearchResponseType } from '@/controllers/notion.ctrl';
 import useSWR from 'swr';
-import { fetcher } from './fetcher';
+import { fetcher } from '@/hooks/fetcher';
 
 export const useSearch = (searchQuery: string) => {
   const options = {

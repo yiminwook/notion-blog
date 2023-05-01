@@ -19,4 +19,7 @@ export const PAGENATION_RANGE = 5;
 
 export const ITEMS_PER_PAGE = 1;
 
-export const PAGE_REVALIDATE_TIME = 60;
+export const PAGE_REVALIDATE_TIME = 5 * 60; //초
+
+export const DEFAULT_BULR_BASEURL =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPkqgcAAJkAi3T5YcEAAAAASUVORK5CYII=';

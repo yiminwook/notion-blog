@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import getENV from '@/utils/getENV';
+import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
 
 interface DetailBlogPageProps {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
@@ -27,9 +28,15 @@ export const getStaticProps: GetStaticProps<DetailBlogPageProps, DetailBlogPageP
   const { pageId } = params!;
 
   const recordMap = await getPageContent(pageId);
+  const previewImage = await insertPreviewImageToRecordMap(recordMap);
 
   return {
-    props: { recordMap },
+    props: {
+      recordMap: {
+        ...recordMap,
+        preview_images: previewImage,
+      },
+    },
     revalidate: PAGE_REVALIDATE_TIME,
   };
 };

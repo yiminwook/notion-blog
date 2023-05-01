@@ -1,5 +1,5 @@
 import { NextApiResponse } from 'next';
-import CustomServerError from './custom_server_error';
+import CustomServerError from '@/controllers/error/custom_server_error';
 
 const errorHandler = (err: unknown, res: NextApiResponse) => {
   let unknownErr = err;
