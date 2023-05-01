@@ -1,6 +1,6 @@
 import { getDatabaseItems } from '@/models/notionClient';
-import CardSection from '@/components/intro/card_section';
-import TagsHeroSection from '@/components/tags/hero_section';
+import CardSection from '@/components/intro/CardSection';
+import TagsHeroSection from '@/components/tags/HeroSection';
 import { getAllTags } from '@/utils/getAllTags';
 import { parseDatabaseItems, ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';

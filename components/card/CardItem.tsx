@@ -1,8 +1,8 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
 import Image from 'next/image';
 import Link from 'next/link';
-import TagList from '@/components/card/tag/tag_list';
-import IconRender from '@/components/card/icon_render';
+import TagList from '@/components/card/tag/TagList';
+import IconRender from '@/components/card/IconRender';
 import { DEFAULT_BULR_BASEURL } from '@/consts';
 
 interface CardItemProps {

@@ -1,5 +1,5 @@
 import { getAllTags } from '@/utils/getAllTags';
-import TagList from '@/components/card/tag/tag_list';
+import TagList from '@/components/card/tag/TagList';
 
 interface TagContainerProps {
   tags: ReturnType<typeof getAllTags>;

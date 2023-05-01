@@ -3,7 +3,7 @@ import { NotionRenderer } from 'react-notion-x';
 import dynamic, { LoaderComponent } from 'next/dynamic';
 import nextLink from 'next/link';
 import nextImage from 'next/image';
-import TagItem from '@/components/card/tag/tag_item';
+import TagItem from '@/components/card/tag/TagItem';
 
 const Code = dynamic(() => import('react-notion-x/build/third-party/code').then((m) => m.Code) as LoaderComponent, {
   ssr: false,

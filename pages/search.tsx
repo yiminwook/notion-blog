@@ -1,5 +1,5 @@
-import SearchInputSection from '@/components/search/input_section';
-import SearchResultSection from '@/components/search/result_section';
+import SearchInputSection from '@/components/search/InputSection';
+import SearchResultSection from '@/components/search/ResultSection';
 
 const Search = () => {
   return (

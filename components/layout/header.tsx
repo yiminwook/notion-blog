@@ -1,4 +1,4 @@
-import IconButton from '@/components/common/icon_button';
+import IconButton from '@/components/common/IconButton';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Link from 'next/link';
 

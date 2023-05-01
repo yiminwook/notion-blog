@@ -1,8 +1,8 @@
 import { getDatabaseItems } from '@/models/notionClient';
 import { ParsedDatabaseItemType, parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticProps, NextPage } from 'next';
-import CardSection from '@/components/intro/card_section';
-import HeroSection from '@/components/intro/hero_section';
+import CardSection from '@/components/intro/CardSection';
+import HeroSection from '@/components/intro/HeroSection';
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/previewImage';

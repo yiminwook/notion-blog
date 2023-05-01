@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from 'next/router';
-import CardList from '@/components/card/card_list';
+import CardList from '@/components/card/CardList';
 import { useSearch } from '@/hooks/useSearch';
-import LoadingSpinner from '@/components/common/loading_spinner';
+import LoadingSpinner from '@/components/common/LoadingSpinner';
 
 const SearchResultSection = () => {
   const {

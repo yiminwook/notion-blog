@@ -1,5 +1,5 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
-import CardItem from '@/components/card/card_item';
+import CardItem from '@/components/card/CardItem';
 
 interface CardListProps {
   cardItems: ParsedDatabaseItemType[];
