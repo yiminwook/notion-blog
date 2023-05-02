@@ -6,6 +6,7 @@ import HeroSection from '@/components/intro/HeroSection';
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/previewImage';
+import PageHead from '@/components/layout/PageHead';
 
 export interface HomePageProps {
   items: ParsedDatabaseItemType[];
@@ -15,6 +16,7 @@ export interface HomePageProps {
 const HomePage: NextPage<HomePageProps> = ({ items, totalLength }) => {
   return (
     <div>
+      <PageHead />
       <HeroSection />
       <CardSection cardItems={items} totalLength={totalLength} />
     </div>

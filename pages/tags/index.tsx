@@ -5,14 +5,17 @@ import { getAllTags } from '@/utils/getAllTags';
 import { GetStaticProps } from 'next';
 import { getENV } from '@/utils/getENV';
 import { NOTION_DATABASE_ID } from '@/consts';
+import PageHead from '@/components/layout/PageHead';
 
 interface TagsIndexPageProps {
   tags: ReturnType<typeof getAllTags>;
 }
 
 const TagsIndexPage = ({ tags }: TagsIndexPageProps) => {
+  const keyword = tags.map((tag) => tag.name).join(', ');
   return (
     <div>
+      <PageHead title="All Tags" keywords={keyword} />
       <TagsHeroSection />
       <TagContainer tags={tags} />
     </div>
