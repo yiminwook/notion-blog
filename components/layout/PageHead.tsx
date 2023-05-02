@@ -1,7 +1,11 @@
+import getConfig from 'next/config';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-const DEFAULT_SITE_URL = 'https://yiminwook.vercel.app';
+const {
+  publicRuntimeConfig: { siteURL },
+} = getConfig();
+
 const DEFAULT_TITLE = 'Minwook BLOG';
 const DEFAULT_DESC = 'Notion API Blog';
 const DEFAULT_KEYWORD = 'Next.js, React, Typescript, Twailwindcss, Notion API, swr, pretendard';
@@ -17,7 +21,6 @@ interface PageHeadProps {
 
 const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
   const { asPath } = useRouter();
-  const siteURL = process.env.SITE_URL ?? DEFAULT_SITE_URL;
   const pageTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
   const pageDesc = description ?? DEFAULT_DESC;
   const pageKeywords = keywords ? `${keywords}, ${DEFAULT_KEYWORD}` : DEFAULT_KEYWORD;

@@ -2,7 +2,7 @@ import { getDatabaseItems, getPageContent } from '@/models/notionClient';
 import NotionPageRender from '@/components/notion/PageRender';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME, SITE_URL } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
 import Comments from '@/components/common/Comments';
