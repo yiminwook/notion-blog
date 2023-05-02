@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps<DetailBlogPageProps, DetailBlogPageP
   const title = getPageTitle(recordMap);
   const keywords = getPageProperty<string[] | undefined>('태그', propertyValue, recordMap)?.join(', ') ?? '';
   const description = getPageProperty<string | undefined>('설명', propertyValue, recordMap) ?? '';
-  const cover = `/api/notion/image?type=cover&id=${pageId}`;
+  const cover = `/api/notion/image?type=cover&pageId=${pageId}`;
   return {
     props: {
       recordMap: {
