@@ -26,15 +26,15 @@ const image = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const pageItem = await getPageItem(pageId.toString());
 
-  const parsedPageItem = parseDatabaseItems([pageItem])[0];
-
-  const { cover, icon } = parsedPageItem;
+  if (!('properties' in pageItem)) throw new CustomServerError({ statusCode: 404, message: 'Page Not Exist' });
+  const { icon, cover } = pageItem;
+  const parsedCover = cover?.type === 'file' ? cover.file.url : cover?.external.url ?? '';
 
   let url = '';
 
   switch (type) {
     case 'cover':
-      url = cover;
+      url = parsedCover;
       break;
 
     case 'icon':
