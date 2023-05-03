@@ -2,7 +2,7 @@
 const nextConfig = {
   // reactStrictMode: true,
   publicRuntimeConfig: {
-    siteURL: process.env.SITE_URL ?? 'https://yiminwook.vercel.app',
+    SITE_URL: process.env.SITE_URL ?? 'http://localhost:3000',
   },
   swcMinify: true,
   images: {

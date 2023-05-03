@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const {
-  publicRuntimeConfig: { siteURL },
+  publicRuntimeConfig: { SITE_URL },
 } = getConfig();
 
 const DEFAULT_TITLE = 'Minwook BLOG';
@@ -24,8 +24,8 @@ const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
   const pageTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
   const pageDesc = description ?? DEFAULT_DESC;
   const pageKeywords = keywords ? `${keywords}, ${DEFAULT_KEYWORD}` : DEFAULT_KEYWORD;
-  const pageImage = `${siteURL}${image ?? DEFAULT_IMAGE}`;
-  const pageURL = `${siteURL}${asPath}`;
+  const pageImage = `${SITE_URL}${image ?? DEFAULT_IMAGE}`;
+  const pageURL = `${SITE_URL}${asPath}`;
 
   return (
     <Head>
