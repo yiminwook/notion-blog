@@ -24,16 +24,14 @@ const Header = () => {
           <ul className="flex flex-row gap-2 items-center">
             {navLinks.map(({ name, link }) => (
               <li key={name} className="text-gray-600 font-medium">
-                <Link href={link}>
-                  <a className="p-3 rounded-md hover:bg-gray-100  hover:text-black">{name}</a>
+                <Link href={link} className="p-3 rounded-md hover:bg-gray-100  hover:text-black">
+                  {name}
                 </Link>
               </li>
             ))}
             <li>
               <Link href="/search">
-                <a>
-                  <IconButton icon={<AiOutlineSearch size="1.5rem" color="white" />} />
-                </a>
+                <IconButton icon={<AiOutlineSearch size="1.5rem" color="white" />} />
               </Link>
             </li>
           </ul>

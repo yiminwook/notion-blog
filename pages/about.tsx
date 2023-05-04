@@ -1,7 +1,7 @@
 import PageHead from '@/components/layout/PageHead';
 import NotionPageRender from '@/components/notion/PageRender';
 import { NOTION_PROFILE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
-import { getPageContent, getPageItem } from '@/models/notionClient';
+import { getPageContent } from '@/models/notionClient';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
 import { GetStaticProps, NextPage } from 'next';
