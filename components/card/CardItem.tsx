@@ -1,5 +1,5 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import Link from 'next/link';
 import TagList from '@/components/card/tag/TagList';
 import IconRender from '@/components/card/IconRender';
@@ -21,9 +21,8 @@ const CardItem = ({ cardItem }: CardItemProps) => {
             alt={title}
             placeholder="blur"
             blurDataURL={previewImage?.dataURIBase64 ?? DEFAULT_BULR_BASEURL}
-            layout="fill"
-            objectFit="cover"
-            className="group-hover:scale-105 transition-transform"
+              className="group-hover:scale-105 transition-transform object-cover overflow-hidden"
+              fill
           />
         </div>
         <div className="p-4 flex flex-col gap-4">

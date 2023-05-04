@@ -2,7 +2,7 @@ import { getPageContent } from '@/models/notionClient';
 import { NotionRenderer } from 'react-notion-x';
 import dynamic, { LoaderComponent } from 'next/dynamic';
 import nextLink from 'next/link';
-import nextImage from "next/legacy/image";
+import nextImage from 'next/legacy/image'; //notionRenderer에서 next13/image 미지원
 import TagItem from '@/components/card/tag/TagItem';
 
 const Code = dynamic(() => import('react-notion-x/build/third-party/code').then((m) => m.Code) as LoaderComponent, {
