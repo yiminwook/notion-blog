@@ -53,6 +53,7 @@ const PaginationItem = ({ to, value, disabled = false, active = false }: Paginat
           active ? 'bg-gray-100 text-black' : 'text-gray-500'
         }`}
         disabled={disabled}
+        tabIndex={-1}
       >
         {value}
       </button>
