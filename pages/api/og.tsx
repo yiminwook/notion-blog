@@ -6,7 +6,7 @@ const DEFAULT_TITLE = 'Notion Devlog';
 const TITLE_STRING_LENGTH = 40;
 
 export const config = {
-  runtime: 'experimental-edge', //next13 "edge"
+  runtime: 'experimental-edge', //@next13 "edge"
 };
 
 const handler = async (req: NextRequest) => {
