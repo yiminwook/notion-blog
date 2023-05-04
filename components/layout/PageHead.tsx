@@ -1,6 +1,7 @@
 import getConfig from 'next/config';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Analytics from '@/components/layout/Analytics';
 
 const {
   publicRuntimeConfig: { SITE_URL },
@@ -53,6 +54,7 @@ const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
       <meta property="twitter:description" content={pageDesc} />
       <meta property="twitter:image" content={pageImage} />
       <meta property="twitter:image:alt" content={pageTitle} />
+      <Analytics />
     </Head>
   );
 };
