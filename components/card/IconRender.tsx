@@ -1,5 +1,5 @@
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 interface IconRenderProps {
   icon: ParsedDatabaseItemType['icon'];
