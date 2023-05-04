@@ -25,7 +25,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
         />
       </Link>
       <div className="p-4 flex flex-col gap-4">
-        <h4 className="font-bold text-2xl group-hover:text-blue-500 transition-colors flex flex-row items-center gap-1">
+        <h4 className="font-bold text-2xl group-hover:text-blue-500 transition-colors flex flex-row items-center gap-2">
           <IconRender icon={icon} alt={title} proxyIconURL={proxy.icon} />
           {title}
         </h4>
