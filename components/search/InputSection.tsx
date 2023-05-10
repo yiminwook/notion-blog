@@ -1,16 +1,14 @@
-import { useRouter } from 'next/router';
+'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent, useEffect, useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
-import PageHead from '../layout/PageHead';
 
 const SearchInputSection = () => {
   const [inputValue, setInputValue] = useState('');
-  const {
-    push,
-    query: { query },
-  } = useRouter();
+  const { push } = useRouter();
+  const searchParams = useSearchParams();
 
-  const searchQuery = query?.toString() ?? '';
+  const searchQuery = searchParams?.get('query') ?? '';
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,7 +23,7 @@ const SearchInputSection = () => {
 
   return (
     <>
-      <PageHead title={`${searchQuery}: 검색결과`} />
+      {/* <PageHead title={`${searchQuery}: 검색결과`} /> */}
       <section className="bg-black">
         <div className="mx-auto py-16 w-4/5">
           <form className="relative" onSubmit={onSubmit}>

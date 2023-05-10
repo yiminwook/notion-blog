@@ -1,14 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useRouter } from 'next/router';
+'use client';
 import CardList from '@/components/card/CardList';
 import { useSearch } from '@/hooks/useSearch';
 import LoadingSpinner from '@/components/common/LoadingSpinner';
+import { useSearchParams } from 'next/navigation';
 
 const SearchResultSection = () => {
-  const {
-    query: { query },
-  } = useRouter();
-  const searchQuery = (Array.isArray(query) ? query[0] : query) ?? '';
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams?.get('query') ?? '';
   const { data, error, isLoading } = useSearch(searchQuery);
 
   return (

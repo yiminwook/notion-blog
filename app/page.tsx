@@ -25,11 +25,11 @@ export const getFirstDatabaseItems = async (): Promise<DatabaseItemsType> => {
 };
 
 const HomePage = async () => {
-  const { items, totalLength } = await getFirstDatabaseItems();
   return (
     <div>
       <HeroSection />
-      <CardSection cardItems={items} totalLength={totalLength} />
+      {/* @ts-expect-error Async Server Component */}
+      <CardSection />
     </div>
   );
 };
