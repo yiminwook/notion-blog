@@ -6,7 +6,7 @@ import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import TagsPage, { TagsPageParams, TagsPageProps } from '@/pages/tags/[tagName]';
-import { insertPreviewImage } from '@/utils/previewImage';
+import { insertPreviewImage } from '@/utils/makePreviewImage';
 
 const TagsWithPage = (props: TagsPageProps) => {
   return <TagsPage {...props} />;

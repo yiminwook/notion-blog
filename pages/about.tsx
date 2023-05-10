@@ -3,7 +3,7 @@ import NotionPageRender from '@/components/notion/PageRender';
 import { NOTION_PROFILE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import { getPageContent } from '@/models/notionClient';
 import getENV from '@/utils/getENV';
-import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
+import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
 import { GetStaticProps, NextPage } from 'next';
 
 interface AboutPageProps {

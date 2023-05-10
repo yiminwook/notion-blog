@@ -7,7 +7,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import { getENV } from '@/utils/getENV';
-import { insertPreviewImage } from '@/utils/previewImage';
+import { insertPreviewImage } from '@/utils/makePreviewImage';
 import PageHead from '@/components/layout/PageHead';
 
 export interface TagsPageProps {

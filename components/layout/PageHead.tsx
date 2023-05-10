@@ -1,11 +1,8 @@
-import getConfig from 'next/config';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import Analytics from '@/components/layout/Analytics';
+'use client';
 
-const {
-  publicRuntimeConfig: { SITE_URL },
-} = getConfig();
+import Head from 'next/head';
+import Analytics from '@/components/layout/Analytics';
+import { useSelectedLayoutSegment } from 'next/navigation';
 
 const DEFAULT_TITLE = 'Minwook BLOG';
 const DEFAULT_DESC = 'Notion API Blog';
@@ -21,12 +18,13 @@ interface PageHeadProps {
 }
 
 const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
-  const { asPath } = useRouter();
+  // const seg = useSelectedLayoutSegment();
   const pageTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
   const pageDesc = description ?? DEFAULT_DESC;
+  // const siteURL = process.env.NEXT_PUBLIC_SITE_URL;
   const pageKeywords = keywords ? `${keywords}, ${DEFAULT_KEYWORD}` : DEFAULT_KEYWORD;
-  const pageImage = `${SITE_URL}${image ?? DEFAULT_IMAGE}`;
-  const pageURL = `${SITE_URL}${asPath}`;
+  // const pageImage = `${SITE_URL}${image ?? DEFAULT_IMAGE}`;
+  // const pageURL = `${SITE_URL}${asPath}`;
 
   return (
     <Head>
@@ -35,15 +33,15 @@ const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
       <meta name="keywords" content={pageKeywords} />
       <meta name="author" content={DEFAULT_AUTHOR} />
       {/* 컨텐츠 중복방지 */}
-      <link rel="canonical" href={pageURL} />
+      {/* <link rel="canonical" href={pageURL} /> */}
       {/* OG */}
       <meta property="og:locale" content="ko_KR" />
-      <meta property="og:url" content={pageURL} />
+      {/* <meta property="og:url" content={pageURL} /> */}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={pageTitle} />
       <meta property="og:site_name" content={pageTitle} />
       <meta property="og:desciption" content={pageDesc} />
-      <meta property="og:image" content={pageImage} />
+      {/* <meta property="og:image" content={pageImage} /> */}
       <meta property="og:image:width" content="640" />
       <meta property="og:image:height" content="425" />
       <meta property="og:image:alt" content={pageTitle} />
@@ -52,7 +50,7 @@ const PageHead = ({ title, description, image, keywords }: PageHeadProps) => {
       <meta property="twitter:site" content={DEFAULT_AUTHOR} />
       <meta property="twitter:creator" content={DEFAULT_AUTHOR} />
       <meta property="twitter:description" content={pageDesc} />
-      <meta property="twitter:image" content={pageImage} />
+      {/* <meta property="twitter:image" content={pageImage} /> */}
       <meta property="twitter:image:alt" content={pageTitle} />
       <Analytics />
     </Head>

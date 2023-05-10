@@ -1,6 +1,8 @@
+'use client';
+
 import { PAGENATION_RANGE } from '@/consts';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useParams, usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
 interface PaginationProps {
@@ -8,8 +10,8 @@ interface PaginationProps {
 }
 
 const Pagination = ({ totalPage }: PaginationProps) => {
-  const { query } = useRouter();
-  const currentPage = Number(query.page) || 1; //NaN일때 1로 변환
+  const params = useParams();
+  const currentPage = Number(params?.page) || 1; //NaN일때 1로 변환
   const pages = Array.from({ length: PAGENATION_RANGE }, (_, i) => currentPage - PAGENATION_RANGE + i + 3).filter(
     (page) => page > 0 && totalPage >= page,
   );
@@ -41,13 +43,14 @@ interface PaginationItemProps {
 }
 
 const PaginationItem = ({ to, value, disabled = false, active = false }: PaginationItemProps) => {
-  const { pathname, query } = useRouter();
-  const paginationRoute = '/page/[page]';
-  const extendedPathname =
-    pathname.indexOf(paginationRoute) === -1 ? `${pathname.replace(/\/$/, '')}${paginationRoute}` : pathname;
+  const pathname = usePathname();
+  const params = useParams();
+  const extendedPathname = params?.page
+    ? pathname!.replace(/\/page\/(\d+)/, `/page/${to}`)
+    : `${pathname!.endsWith('/') ? pathname : pathname + '/'}page/${to}`;
 
   return (
-    <Link href={{ pathname: extendedPathname, query: { ...query, page: to } }}>
+    <Link href={extendedPathname}>
       <button
         className={`px-4 py-2 rounded-lg  hover:text-black hover:font-semibold disabled:text-gray-400 disabled:cursor-not-allowed ${
           active ? 'bg-gray-100 text-black' : 'text-gray-500'

@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import getENV from '@/utils/getENV';
-import { insertPreviewImageToRecordMap } from '@/utils/previewImage';
+import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
 import Comments from '@/components/common/Comments';
 import PageHead from '@/components/layout/PageHead';
 import { getPageProperty, getPageTitle } from 'notion-utils';

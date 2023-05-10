@@ -1,3 +1,5 @@
+'use client';
+
 import { getPageContent } from '@/models/notionClient';
 import { NotionRenderer } from 'react-notion-x';
 import dynamic, { LoaderComponent } from 'next/dynamic';

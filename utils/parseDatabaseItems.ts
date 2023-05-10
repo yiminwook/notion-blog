@@ -1,6 +1,6 @@
 import { getDatabaseItems } from '@/models/notionClient';
 import { MultiSelectPropertyItemObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
-import { makePreviewImage } from '@/utils/previewImage';
+import { makePreviewImage } from '@/utils/makePreviewImage';
 
 export interface ParsedDatabaseItemType {
   id: string;
