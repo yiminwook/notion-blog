@@ -11,4 +11,7 @@ NEXT_PUBLIC_SITE_URL=
 
 ```
 
+@ts-expect-error Async Server Component
+async component 타입에러 발생시
+
 ---
