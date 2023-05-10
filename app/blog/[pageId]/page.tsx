@@ -17,7 +17,7 @@ export const generateStaticParams = async (): Promise<DetailBlogPageParams[]> =>
   return paths;
 };
 
-interface DetailBlogPageContentType {
+interface DetailBlogPageContentReturnType {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
   // seo: {
   //   title: string;
@@ -27,7 +27,7 @@ interface DetailBlogPageContentType {
   // };
 }
 
-const getDetailBlogPageContent = async (pageId: string): Promise<DetailBlogPageContentType> => {
+const getDetailBlogPageContent = async (pageId: string): Promise<DetailBlogPageContentReturnType> => {
   const recordMap = await getPageContent(pageId);
   const previewImage = await insertPreviewImageToRecordMap(recordMap);
   // const propertyValue = Object.values(recordMap.block)[0].value;

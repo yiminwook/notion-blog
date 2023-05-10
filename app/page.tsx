@@ -6,12 +6,12 @@ import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/cons
 import getENV from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/makePreviewImage';
 
-export interface DatabaseItemsType {
+export interface DatabaseItemsReturnType {
   items: ParsedDatabaseItemType[];
   totalLength: number;
 }
 
-export const getFirstDatabaseItems = async (): Promise<DatabaseItemsType> => {
+const getFirstDatabaseItems = async (): Promise<DatabaseItemsReturnType> => {
   const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const parsedDatabaseItems = parseDatabaseItems(databaseItems.slice(0, ITEMS_PER_PAGE));

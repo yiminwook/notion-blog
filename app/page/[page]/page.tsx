@@ -1,4 +1,4 @@
-import { DatabaseItemsType } from '@/app/page';
+import { DatabaseItemsReturnType } from '@/app/page';
 import CardSection from '@/components/intro/CardSection';
 import HeroSection from '@/components/intro/HeroSection';
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
@@ -20,7 +20,7 @@ export const generateStaticParams = async (): Promise<HomeWithPageParams[]> => {
   return paths;
 };
 
-const getPageDatabaseItems = async (page: string): Promise<DatabaseItemsType> => {
+const getPageDatabaseItems = async (page: string): Promise<DatabaseItemsReturnType> => {
   const pageQuery = Number(page);
   if (Number.isNaN(pageQuery)) throw new Error('PageQuery is not number');
 

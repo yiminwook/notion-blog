@@ -4,12 +4,12 @@ import { getPageContent } from '@/models/notionClient';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
 
-interface AboutPageContentType {
+interface AboutPageContentReturnType {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
   ogImage: string;
 }
 
-const getAboutPageContent = async (): Promise<AboutPageContentType> => {
+const getAboutPageContent = async (): Promise<AboutPageContentReturnType> => {
   const profileId = getENV(NOTION_PROFILE_ID);
 
   const recordMap = await getPageContent(profileId);

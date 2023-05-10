@@ -51,3 +51,11 @@ export const parseDatabaseItems = (items: Awaited<ReturnType<typeof getDatabaseI
 
   return parsedItems;
 };
+
+/** tagName 앞글자를 대문자로 변환
+ * //ex) Nextjs, Typescript
+ * @param tagName
+ */
+export const pascalTagName = (tagName: string) => {
+  return tagName[0].toUpperCase() + tagName.slice(1);
+};
