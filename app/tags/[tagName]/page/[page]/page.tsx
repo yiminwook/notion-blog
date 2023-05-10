@@ -14,7 +14,7 @@ interface TagsWithPageParams {
   tagName: string;
 }
 
-export const generateParams = async (): Promise<TagsWithPageParams[]> => {
+export const generateStaticParams = async (): Promise<TagsWithPageParams[]> => {
   const databaseId = getENV(NOTION_DATABASE_ID);
   const databaseItems = await getDatabaseItems(databaseId);
   const parsedItems = parseDatabaseItems(databaseItems);
@@ -34,7 +34,7 @@ export const generateParams = async (): Promise<TagsWithPageParams[]> => {
   return paths;
 };
 
-export const getDatabaseItemsByTagNameWithPage = async ({
+const getDatabaseItemsByTagNameWithPage = async ({
   tagName,
   page,
 }: TagsWithPageParams): Promise<GetDatabaseByTagNameReturnType> => {

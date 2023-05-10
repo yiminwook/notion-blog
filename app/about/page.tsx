@@ -36,4 +36,4 @@ const AboutPage = async () => {
 
 export default AboutPage;
 
-export const revaildate = PAGE_REVALIDATE_TIME;
+export const revalidate = PAGE_REVALIDATE_TIME;
