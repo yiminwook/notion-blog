@@ -8,7 +8,7 @@ export default class CustomServerError extends Error {
     this.location = location;
   }
 
-  serializeErrors(): { message: string } | string {
-    return { message: this.message };
+  serializeErrorMessage(): string {
+    return this.message;
   }
 }
