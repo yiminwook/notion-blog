@@ -3,7 +3,7 @@ import CardSection from '@/components/intro/CardSection';
 import TagsHeroSection from '@/components/tags/HeroSection';
 import { getAllTags } from '@/utils/getAllTags';
 import { parseDatabaseItems, ParsedDatabaseItemType, pascalTagName } from '@/utils/parseDatabaseItems';
-import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import { getENV } from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/makePreviewImage';
 import { Metadata } from 'next';
@@ -68,7 +68,3 @@ export const generateMetadata = async ({ params: { tagName } }: TagsPageProps): 
     keywords: tagName,
   };
 };
-
-export const revalidate = PAGE_REVALIDATE_TIME;
-
-// fallback: 'blocking',

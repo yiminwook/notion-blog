@@ -3,6 +3,7 @@ export const NOTION_DATABASE_ID = 'NOTION_DATABASE_ID';
 export const NOTION_PROFILE_ID = 'NOTION_PROFILE_ID';
 export const SITE_URL = 'SITE_URL';
 
+/** notionColor table */
 export const COLOR_TABLE = {
   purple: '#e9d5ff',
   yellow: '#fef9c3',
@@ -20,7 +21,7 @@ export const PAGENATION_RANGE = 5;
 
 export const ITEMS_PER_PAGE = 6;
 
-export const PAGE_REVALIDATE_TIME = 5 * 60; //초
+export const PAGE_REVALIDATE_TIME = 5 * 60; //초 단위
 
 export const DEFAULT_BULR_BASEURL =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPkqgcAAJkAi3T5YcEAAAAASUVORK5CYII=';

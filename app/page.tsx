@@ -2,7 +2,7 @@ import { getDatabaseItems } from '@/models/notionClient';
 import { ParsedDatabaseItemType, parseDatabaseItems } from '@/utils/parseDatabaseItems';
 import CardSection from '@/components/intro/CardSection';
 import HeroSection from '@/components/intro/HeroSection';
-import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/makePreviewImage';
 
@@ -35,4 +35,3 @@ const HomePage = async () => {
 };
 
 export default HomePage;
-export const revalidate = PAGE_REVALIDATE_TIME;

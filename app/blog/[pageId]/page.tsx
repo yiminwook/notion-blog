@@ -1,6 +1,6 @@
 import { getDatabaseItems, getPageContent } from '@/models/notionClient';
 import NotionPageRender from '@/components/notion/PageRender';
-import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { NOTION_DATABASE_ID } from '@/consts';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
 import Comments from '@/components/common/Comments';
@@ -66,6 +66,3 @@ export const generateMetadata = async ({ params: { pageId } }: DetailBlogPagePro
     openGraph: { images: [cover] },
   };
 };
-
-export const revalidate = PAGE_REVALIDATE_TIME;
-// fallback: 'blocking', //true일시 pageId가 없어 에러가 날 수 있음

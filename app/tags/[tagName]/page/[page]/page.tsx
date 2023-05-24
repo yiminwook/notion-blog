@@ -1,4 +1,4 @@
-import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import { getDatabaseItems } from '@/models/notionClient';
 import { getAllTags } from '@/utils/getAllTags';
 import { getENV } from '@/utils/getENV';
@@ -23,7 +23,7 @@ export const generateStaticParams = async (): Promise<TagsWithPageParams[]> => {
   const paths = allTags.reduce<TagsWithPageParams[]>((acc, { id, name }) => {
     const tagItems = parsedItems.filter(({ tags }) => tags.findIndex((tag) => tag.id === id) > -1);
 
-    const path = Array.from({ length: Math.ceil(tagItems.length / ITEMS_PER_PAGE) }, (_, i) => ({
+    const path: TagsWithPageParams[] = Array.from({ length: Math.ceil(tagItems.length / ITEMS_PER_PAGE) }, (_, i) => ({
       tagName: name.toLowerCase(), //ex) nextjs, typescript 모두 소문자
       page: (i + 1).toString(),
     }));
@@ -73,5 +73,3 @@ const TagsWithPage = async ({ params: { tagName, page } }: TagsWithPageProps) =>
 };
 
 export default TagsWithPage;
-export const revalidate = PAGE_REVALIDATE_TIME;
-// fallback: 'blocking',

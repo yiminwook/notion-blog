@@ -1,12 +1,11 @@
 import { DatabaseItemsReturnType } from '@/app/page';
 import CardSection from '@/components/intro/CardSection';
 import HeroSection from '@/components/intro/HeroSection';
-import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { ITEMS_PER_PAGE, NOTION_DATABASE_ID } from '@/consts';
 import { getDatabaseItems } from '@/models/notionClient';
 import { getENV } from '@/utils/getENV';
 import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
-import { Metadata } from 'next';
 
 interface HomeWithPageParams {
   page: string;
@@ -50,6 +49,3 @@ const HomeWithPage = async ({ params }: HomeWithPageProps) => {
 };
 
 export default HomeWithPage;
-
-export const revalidate = PAGE_REVALIDATE_TIME;
-// fallback: 'blocking',

@@ -12,7 +12,7 @@ import '@/styles/globals.css';
 import '@/styles/notionStyle.scss';
 import PageHead from '@/components/layout/PageHead';
 import { DEFALUT_METADATA } from '@/consts/headConst';
-import Analytics from '@/components/layout/Analytics';
+import { PAGE_REVALIDATE_TIME } from '@/consts';
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -31,4 +31,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 
 export default RootLayout;
 
-// export const metadata = DEFALUT_METADATA;
+/** Default Route Segment Config */
+export const metadata = DEFALUT_METADATA;
+export const revalidate = PAGE_REVALIDATE_TIME;
+export const dynamicParams = 'blocking'; //fallback

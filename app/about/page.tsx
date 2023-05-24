@@ -1,5 +1,5 @@
 import NotionPageRender from '@/components/notion/PageRender';
-import { NOTION_PROFILE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { NOTION_PROFILE_ID } from '@/consts';
 import { getPageContent } from '@/models/notionClient';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
@@ -44,5 +44,3 @@ export const generateMetadata = (): Metadata => {
     },
   };
 };
-
-export const revalidate = PAGE_REVALIDATE_TIME;

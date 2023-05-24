@@ -3,7 +3,7 @@ import TagsHeroSection from '@/components/tags/HeroSection';
 import TagContainer from '@/components/tags/TagContainer';
 import { getAllTags } from '@/utils/getAllTags';
 import { getENV } from '@/utils/getENV';
-import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { NOTION_DATABASE_ID } from '@/consts';
 import { Metadata } from 'next';
 
 interface TagsContentReturnType {
@@ -39,5 +39,3 @@ export const generateMetadata = async (): Promise<Metadata> => {
     keywords: tags.map((tag) => tag.name),
   };
 };
-
-export const revalidate = PAGE_REVALIDATE_TIME;
