@@ -7,6 +7,7 @@ import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/cons
 import { getENV } from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/makePreviewImage';
 import PageHead from '@/components/layout/PageHead';
+import { Metadata } from 'next';
 
 interface TagsPageParams {
   tagName: string;
@@ -49,17 +50,26 @@ interface TagsPageProps {
 }
 const TagsPage = async ({ params: { tagName } }: TagsPageProps) => {
   const { databaseItems, totalLength } = await getDatabaseByTagName(tagName);
-  const parsedTagName = pascalTagName(tagName);
+
   return (
-    <div>
-      <PageHead title={`#${parsedTagName}`} keywords={tagName} />
+    <>
       <TagsHeroSection title={`#${tagName}`} />
       <CardSection cardItems={databaseItems} totalLength={totalLength} />
-    </div>
+    </>
   );
 };
 
 export default TagsPage;
+
+export const generateMetadata = async ({ params: { tagName } }: TagsPageProps): Promise<Metadata> => {
+  const parsedTagName = pascalTagName(tagName);
+
+  return {
+    title: `#${parsedTagName}`,
+    keywords: tagName,
+  };
+};
+
 export const revalidate = PAGE_REVALIDATE_TIME;
 
 // fallback: 'blocking',

@@ -4,6 +4,7 @@ import TagContainer from '@/components/tags/TagContainer';
 import { getAllTags } from '@/utils/getAllTags';
 import { getENV } from '@/utils/getENV';
 import { NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
+import { Metadata } from 'next';
 
 interface TagsContentReturnType {
   tags: ReturnType<typeof getAllTags>;
@@ -19,10 +20,9 @@ const getAllTagsContent = async (): Promise<TagsContentReturnType> => {
 
 const TagsIndexPage = async () => {
   const { tags } = await getAllTagsContent();
-  // const keyword = tags.map((tag) => tag.name).join(', ');
+
   return (
     <div>
-      {/* <PageHead title="All Tags" keywords={keyword} /> */}
       <TagsHeroSection />
       <TagContainer tags={tags} />
     </div>
@@ -30,4 +30,14 @@ const TagsIndexPage = async () => {
 };
 
 export default TagsIndexPage;
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const { tags } = await getAllTagsContent();
+
+  return {
+    title: 'All Tags',
+    keywords: tags.map((tag) => tag.name),
+  };
+};
+
 export const revalidate = PAGE_REVALIDATE_TIME;

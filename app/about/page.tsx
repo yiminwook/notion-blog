@@ -3,37 +3,46 @@ import { NOTION_PROFILE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import { getPageContent } from '@/models/notionClient';
 import getENV from '@/utils/getENV';
 import { insertPreviewImageToRecordMap } from '@/utils/makePreviewImage';
+import { Metadata } from 'next';
 
 interface AboutPageContentReturnType {
   recordMap: Awaited<ReturnType<typeof getPageContent>>;
-  ogImage: string;
 }
 
 const getAboutPageContent = async (): Promise<AboutPageContentReturnType> => {
   const profileId = getENV(NOTION_PROFILE_ID);
-
   const recordMap = await getPageContent(profileId);
   const recordMapWithPreview = await insertPreviewImageToRecordMap(recordMap);
-  const cover = `/api/notion/image?type=cover&pageId=${profileId}`;
+
   return {
     recordMap: {
       ...recordMap,
       preview_images: recordMapWithPreview,
     },
-    ogImage: cover,
   };
 };
 
 const AboutPage = async () => {
-  const { recordMap, ogImage } = await getAboutPageContent();
+  const { recordMap } = await getAboutPageContent();
   return (
-    <div>
-      {/* <PageHead title="About" image={ogImage} /> */}
+    <>
       <NotionPageRender recordMap={recordMap} />
-    </div>
+    </>
   );
 };
 
 export default AboutPage;
+
+export const generateMetadata = (): Metadata => {
+  const profileId = getENV(NOTION_PROFILE_ID);
+  const cover = `/api/notion/image?type=cover&pageId=${profileId}`;
+
+  return {
+    title: 'About',
+    openGraph: {
+      images: [cover],
+    },
+  };
+};
 
 export const revalidate = PAGE_REVALIDATE_TIME;

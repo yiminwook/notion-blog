@@ -11,6 +11,7 @@ import 'pretendard/dist/web/variable/pretendardvariable.css';
 import '@/styles/globals.css';
 import '@/styles/notionStyle.scss';
 import PageHead from '@/components/layout/PageHead';
+import { DEFALUT_METADATA } from '@/consts/headConst';
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -28,3 +29,5 @@ const RootLayout = ({ children }: PropsWithChildren) => {
 };
 
 export default RootLayout;
+
+export const metadata = DEFALUT_METADATA;

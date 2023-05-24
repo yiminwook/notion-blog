@@ -6,6 +6,7 @@ import { getDatabaseItems } from '@/models/notionClient';
 import { getENV } from '@/utils/getENV';
 import getPaginationRange from '@/utils/getPaginationRange';
 import { parseDatabaseItems } from '@/utils/parseDatabaseItems';
+import { Metadata } from 'next';
 
 interface HomeWithPageParams {
   page: string;
