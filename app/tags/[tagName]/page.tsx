@@ -6,7 +6,6 @@ import { parseDatabaseItems, ParsedDatabaseItemType, pascalTagName } from '@/uti
 import { ITEMS_PER_PAGE, NOTION_DATABASE_ID, PAGE_REVALIDATE_TIME } from '@/consts';
 import { getENV } from '@/utils/getENV';
 import { insertPreviewImage } from '@/utils/makePreviewImage';
-import PageHead from '@/components/layout/PageHead';
 import { Metadata } from 'next';
 
 interface TagsPageParams {

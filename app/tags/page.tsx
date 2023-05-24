@@ -22,10 +22,10 @@ const TagsIndexPage = async () => {
   const { tags } = await getAllTagsContent();
 
   return (
-    <div>
+    <>
       <TagsHeroSection />
       <TagContainer tags={tags} />
-    </div>
+    </>
   );
 };
 

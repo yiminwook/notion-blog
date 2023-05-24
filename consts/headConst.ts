@@ -18,15 +18,20 @@ export const DEFALUT_METADATA: Metadata = {
   description: DEFAULT_DESC,
   authors: [{ name: DEFAULT_AUTHOR }],
   metadataBase: new URL(DEFAULT_SITE_URL),
+  alternates: {
+    canonical: DEFAULT_SITE_URL, //SEO 중복서치 방지
+  },
   openGraph: {
     title: DEFAULT_TITLE,
     description: DEFAULT_DESC,
     url: DEFAULT_SITE_URL,
-    type: 'website',
     siteName: DEFAULT_TITLE,
+    type: 'website',
     locale: 'ko_KR',
   },
-  alternates: {
-    canonical: DEFAULT_SITE_URL, //SEO 중복서치 방지
+  twitter: {
+    site: DEFAULT_AUTHOR,
+    creator: DEFAULT_AUTHOR,
+    description: DEFAULT_DESC,
   },
 };

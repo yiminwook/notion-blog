@@ -1,27 +1,12 @@
-import { NextRequest } from 'next/server';
-import { ImageResponse } from '@vercel/og';
-import CustomServerError from '@/controllers/error/customServerError';
+import { ImageResponse } from 'next/server';
 
-const DEFAULT_TITLE = 'Notion Devlog';
-const TITLE_STRING_LENGTH = 40;
+const DEFAULT_TITLE = 'Minwook Blog';
+const TITLE_STRING_LENGTH = 20;
 
-export const config = {
-  runtime: 'edge',
-};
-
-const handler = async (req: NextRequest) => {
+const makeOgImage = async (title: string = DEFAULT_TITLE) => {
   try {
-    const { method, url } = req;
-    if (method !== 'GET') {
-      throw new CustomServerError({
-        statusCode: 405,
-        message: 'Not supported Method',
-      });
-    }
-
-    const { searchParams } = new URL(url);
-    let title = searchParams.get('title') ?? DEFAULT_TITLE;
-    if (title.length > TITLE_STRING_LENGTH) title = title.substring(0, TITLE_STRING_LENGTH) + '...';
+    let ogTitle = title ?? DEFAULT_TITLE;
+    if (ogTitle.length > TITLE_STRING_LENGTH) ogTitle = title.substring(0, TITLE_STRING_LENGTH) + '...';
     return new ImageResponse(
       (
         <div
@@ -71,7 +56,7 @@ const handler = async (req: NextRequest) => {
         fonts: [
           {
             name: 'Pretendard Black',
-            data: await fetch(new URL('../../fonts/PretendardStd-Black.woff', import.meta.url)).then((res) =>
+            data: await fetch(new URL('../fonts/PretendardStd-Black.woff', import.meta.url)).then((res) =>
               res.arrayBuffer(),
             ),
           },
@@ -82,12 +67,8 @@ const handler = async (req: NextRequest) => {
     console.error(error);
     let status = 500;
     let message = 'Failed to generate the image';
-    if (error instanceof CustomServerError) {
-      status = error.statusCode;
-      message = error.message;
-    }
     return new Response(message, { status });
   }
 };
 
-export default handler;
+export default makeOgImage;

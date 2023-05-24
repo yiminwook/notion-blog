@@ -27,10 +27,10 @@ const getFirstDatabaseItems = async (): Promise<DatabaseItemsReturnType> => {
 const HomePage = async () => {
   const { items, totalLength } = await getFirstDatabaseItems();
   return (
-    <div>
+    <>
       <HeroSection />
       <CardSection cardItems={items} totalLength={totalLength} />
-    </div>
+    </>
   );
 };
 
