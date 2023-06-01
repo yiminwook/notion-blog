@@ -1,8 +1,6 @@
 import lqip from 'lqip-modern';
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types';
 import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
-import { getPageImageUrls } from 'notion-utils';
-import { defaultMapImageUrl } from 'react-notion-x';
 import axios from 'axios';
 
 export const makePreviewImage = async (url: string) => {
@@ -48,11 +46,7 @@ export const insertPreviewImage = async (
 };
 
 export const insertPreviewImageToRecordMap = async (recordMap: ExtendedRecordMap): Promise<PreviewImageMap> => {
-  const urls = getPageImageUrls(recordMap, {
-    mapImageUrl: defaultMapImageUrl,
-  });
-
+  const urls = Object.values(recordMap.signed_urls);
   const previewImageMap = await Promise.all(urls.map(async (url) => [url, await makePreviewImage(url)]));
-
   return Object.fromEntries(previewImageMap);
 };

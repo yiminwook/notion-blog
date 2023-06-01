@@ -11,7 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     await notionCtrl.image(req, res);
   } catch (error) {
     console.error(error);
-    errorHandler(error, res);
+    const { status, message } = errorHandler(error);
+    return res.status(status).json({ message });
   }
 };
 

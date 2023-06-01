@@ -7,6 +7,7 @@ import { NotionAPI } from 'notion-client';
 /** @notionhq */
 export const notionClient = new Client({
   auth: getENV(NOTION_API_KEY),
+  fetch, //next.js fetch cache
 });
 
 interface DatabaseQueryOption {
