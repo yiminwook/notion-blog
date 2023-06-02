@@ -1,6 +1,7 @@
-import { ParsedDatabaseItemType } from '@/utils/parseDatabaseItems';
+import { ParsedDatabaseItemType, pascalTagName } from '@/utils/parseDatabaseItems';
 import Link from 'next/link';
 import { COLOR_TABLE } from '@/consts';
+import { useMemo } from 'react';
 
 interface TagItemProps {
   tagItem: ParsedDatabaseItemType['tags'][number];
@@ -8,14 +9,17 @@ interface TagItemProps {
 
 const TagItem = ({ tagItem }: TagItemProps) => {
   const { name, color } = tagItem;
+
+  const pascalName = useMemo(() => pascalTagName(name), [name]);
+
   return (
     <li>
       <Link
         href={`/tags/${name.toLocaleLowerCase()}`}
-        className="hover:underline hover:-translate-y-1 hover:shadow-md block transition-all  px-2 py-1 rounded-full font-light text-gray-800 text-sm"
+        className="block px-2 py-1 rounded-full font-light text-gray-800 text-sm hover:text-white"
         style={{ backgroundColor: COLOR_TABLE[color] }}
       >
-        #{name}
+        #{pascalName}
       </Link>
     </li>
   );

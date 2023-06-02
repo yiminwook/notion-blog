@@ -13,7 +13,7 @@ export const COLOR_TABLE = {
   brown: '#eee0da',
   red: '#fecaca',
   orange: '#fed7aa',
-  gray: '#f3f4f6',
+  gray: '#cccccc',
   default: '#c8d6e5',
 };
 
