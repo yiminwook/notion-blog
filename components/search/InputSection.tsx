@@ -23,21 +23,21 @@ const SearchInputSection = () => {
 
   return (
     <>
-      {/* <PageHead title={`${searchQuery}: 검색결과`} /> */}
-      <section className="bg-black">
+      <section>
         <div className="mx-auto py-16 w-4/5">
           <form className="relative" onSubmit={onSubmit}>
             <input
               type="text"
-              className="w-full outline-none px-4 py-2 text-xl rounded-xl"
+              className="w-full outline-none px-4 py-2 text-xl rounded-xl border-2 border-[var(--search-input-outline)] placeholder:text-center"
               onChange={(e) => setInputValue(() => e.target.value)}
+              placeholder="제목을 검색 해주세요"
               value={inputValue}
             />
             <button
               type="submit"
               className="absolute right-2 top-1/2 -translate-y-1/2 p-2 hover:bg-gray-200 rounded-xl "
             >
-              <AiOutlineSearch size={'1.5rem'} color="gray" />
+              <AiOutlineSearch size={'1.5rem'} color="var(--search-input-outline)" />
             </button>
           </form>
         </div>

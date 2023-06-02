@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-color: #d1f1ff;
+  --footer-bg-color: #f8d496;
+  --card-bg-color: rgba(255, 255, 255, 0.6);
+  --search-input-outline: #5579c6;
+  --notion-font: inherit;
+  --notion-bg-color: rgba(255, 255, 255, 0.6);
+  --notion-font: inherit;
+}
+
 body {
   font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
     'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', sans-serif;
+
+  background-color: var(--bg-color);
 }
