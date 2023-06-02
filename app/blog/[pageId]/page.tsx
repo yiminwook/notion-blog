@@ -42,10 +42,10 @@ const DetailBlogPage = async ({ params: { pageId } }: DetailBlogPageProps) => {
   const { recordMap } = await getDetailBlogPageContent(pageId);
 
   return (
-    <div>
+    <>
       <NotionPageRender recordMap={recordMap} />
       <Comments />
-    </div>
+    </>
   );
 };
 

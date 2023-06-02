@@ -41,10 +41,10 @@ interface HomeWithPageProps {
 const HomeWithPage = async ({ params }: HomeWithPageProps) => {
   const { items, totalLength } = await getPageDatabaseItems(params.page);
   return (
-    <div>
+    <>
       <HeroSection />
       <CardSection cardItems={items} totalLength={totalLength} />
-    </div>
+    </>
   );
 };
 

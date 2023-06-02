@@ -4,10 +4,10 @@ import { Metadata } from 'next';
 
 const Search = () => {
   return (
-    <div>
+    <>
       <SearchInputSection />
       <SearchResultSection />
-    </div>
+    </>
   );
 };
 

@@ -64,11 +64,10 @@ const TagsWithPage = async ({ params: { tagName, page } }: TagsWithPageProps) =>
   const { databaseItems, totalLength } = await getDatabaseItemsByTagNameWithPage({ tagName, page });
   const pasedTagName = pascalTagName(tagName);
   return (
-    <div>
-      {/* <PageHead title={`#${tagName}`} keywords={tagName} /> */}
+    <>
       <TagsHeroSection title={`#${pasedTagName}`} />
       <CardSection cardItems={databaseItems} totalLength={totalLength} />
-    </div>
+    </>
   );
 };
 
