@@ -4,6 +4,7 @@ const DEFAULT_TITLE = 'Minwook BLOG';
 const DEFAULT_DESC = 'Notion API Blog';
 const DEFAULT_AUTHOR = 'Minwook';
 const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const DEFAULT_ICON_URL = '/image/icon-16px.png';
 // const DEFAULT_KEYWORD = 'Next.js, React, Typescript, Twailwindcss, Notion API, swr, pretendard';
 // const DEFAULT_IMAGE = `/api/og?title=${encodeURIComponent(DEFAULT_TITLE)}`;
 // const pageTitle = title ? `${title} | ${DEFAULT_TITLE}` : DEFAULT_TITLE;
@@ -14,6 +15,7 @@ const DEFAULT_SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3
 // const pageURL = `${siteURL}${asPath}`;
 
 export const DEFALUT_METADATA: Metadata = {
+  icons: { icon: DEFAULT_ICON_URL, apple: DEFAULT_ICON_URL },
   title: { default: DEFAULT_TITLE, template: `%s | ${DEFAULT_TITLE}` },
   description: DEFAULT_DESC,
   authors: [{ name: DEFAULT_AUTHOR }],
