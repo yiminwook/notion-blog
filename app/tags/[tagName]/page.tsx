@@ -49,10 +49,11 @@ interface TagsPageProps {
 }
 const TagsPage = async ({ params: { tagName } }: TagsPageProps) => {
   const { databaseItems, totalLength } = await getDatabaseByTagName(tagName);
+  const parsedTagName = pascalTagName(tagName);
 
   return (
     <>
-      <TagsHeroSection title={`#${tagName}`} />
+      <TagsHeroSection title={`#${parsedTagName}`} />
       <CardSection cardItems={databaseItems} totalLength={totalLength} />
     </>
   );
