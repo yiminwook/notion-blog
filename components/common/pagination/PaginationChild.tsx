@@ -29,7 +29,7 @@ export const BeforeLink = ({ initialPage }: { initialPage: number | null; totalP
   return (
     <PaginationItem
       currentPage={0}
-      nextPage={1}
+      nextPage={initialPage - PAGINATION_RANGE}
       disabled={disabled}
       value={<MdKeyboardArrowLeft size="1rem" color="inherit" />}
     />
