@@ -19,7 +19,7 @@ export const COLOR_TABLE = {
 
 export const PAGINATION_RANGE = 5;
 
-export const ITEMS_PER_PAGE = 1;
+export const ITEMS_PER_PAGE = 6;
 
 export const PAGE_REVALIDATE_TIME = 5 * 60; //초 단위
 
