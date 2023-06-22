@@ -14,7 +14,7 @@ const CardItem = ({ cardItem }: CardItemProps) => {
 
   return (
     <li className="group h-full flex flex-col shadow-lg rounded-2xl bg-[color:var(--card-bg-color)] backdrop-blur-sm">
-      <Link href={`/blog/${id}`} className="relative block glow  overflow-hidden aspect-[1.3/1] rounded-t-2xl">
+      <Link href={`/blog/${id}`} className="relative block overflow-hidden aspect-[1.3/1] rounded-t-2xl">
         <Image
           src={proxy.cover ?? cover}
           alt={title}
