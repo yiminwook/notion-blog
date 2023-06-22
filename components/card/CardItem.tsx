@@ -13,19 +13,21 @@ const CardItem = ({ cardItem }: CardItemProps) => {
   const { cover, description, icon, id, published, tags, title, proxy, previewImage } = cardItem;
 
   return (
-    <li className="group h-full flex flex-col shadow-lg rounded-2xl bg-[color:var(--card-bg-color)] backdrop-blur-sm">
-      <Link href={`/blog/${id}`} className="relative block overflow-hidden aspect-[1.3/1] rounded-t-2xl">
-        <Image
-          src={proxy.cover ?? cover}
-          alt={title}
-          placeholder="blur"
-          blurDataURL={previewImage?.dataURIBase64 ?? DEFAULT_BULR_BASEURL}
-          className="group-hover:scale-105 transition-transform object-cover overflow-hidden"
-          fill
-        />
+    <li className="group flex flex-col shadow-lg rounded-2xl bg-[color:var(--card-bg-color)] backdrop-blur-sm">
+      <Link href={`/blog/${id}`}>
+        <div className="relative grow overflow-hidden aspect-[1.3/1] rounded-t-2xl">
+          <Image
+            src={proxy.cover ?? cover}
+            alt={title}
+            placeholder="blur"
+            blurDataURL={previewImage?.dataURIBase64 ?? DEFAULT_BULR_BASEURL}
+            className="group-hover:scale-105 transition-transform object-cover overflow-hidden"
+            fill
+          />
+        </div>
       </Link>
       <div className="p-4 flex flex-col gap-4">
-        <h4 className="font-bold text-2xl group-hover:text-blue-500 transition-colors flex flex-row items-center gap-2">
+        <h4 className="font-bold text-2xl group-hover:text-blue-500 transition-colors flex items-center gap-2">
           <IconRender icon={icon} alt={title} proxyIconURL={proxy.icon} />
           {title}
         </h4>
