@@ -4,10 +4,11 @@ interface ErrorHandlerReturnType {
   status: number;
   message: string;
 }
-const errorHandler = (err: unknown): ErrorHandlerReturnType => {
-  let unknownErr = err;
+const errorHandler = (error: unknown): ErrorHandlerReturnType => {
+  console.error(error);
+  let unknownErr = error;
 
-  if (err instanceof CustomServerError === false) {
+  if (error instanceof CustomServerError === false) {
     unknownErr = new CustomServerError({
       statusCode: 499,
       message: 'unknown error',
@@ -15,7 +16,7 @@ const errorHandler = (err: unknown): ErrorHandlerReturnType => {
   }
 
   const { statusCode, serializeErrorMessage } = unknownErr as CustomServerError;
-  return { status: statusCode, message: serializeErrorMessage() };
+  return { status: statusCode, message: serializeErrorMessage.bind(unknownErr)() };
 };
 
 export default errorHandler;

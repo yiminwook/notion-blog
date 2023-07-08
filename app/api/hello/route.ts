@@ -12,7 +12,6 @@ export const GET = async (req: NextRequest) => {
     const parsedSearchItems = await notionCtrl.search(query);
     return NextResponse.json({ message: 'ok' });
   } catch (error) {
-    console.error(error);
     const { status, message } = errorHandler(error);
     return NextResponse.json({ message }, { status });
   }
